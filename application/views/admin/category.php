@@ -82,6 +82,7 @@
                                                       <div class="mb-3">
                                                           <label class="form-label" for="names_c">Nombres</label>
                                                           <input class="form-control input-air-primary" id="names_c" name="names_c" type="text" placeholder="Ejem. Nombre de Categoria" autofocus>
+                                                          <input class="form-control input-air-primary" id="id_category" name="id_category" type="hidden" placeholder="Ejem. Nombre de Categoria" autofocus>
                                                       </div>
                                                   </div>
                                               </div>
@@ -104,12 +105,12 @@
                                                   </div>
                                               </div>
                                               <div class="row">
-                                          </div>
-                                          <div class="card-footer text-end">
-                                              <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
-                                              <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Categoria</button>
-                                              <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
-                                          </div>
+                                              </div>
+                                              <div class="card-footer text-end">
+                                                  <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
+                                                  <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Categoria</button>
+                                                  <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
+                                              </div>
                                       </form>
                                   </div>
                               </div>

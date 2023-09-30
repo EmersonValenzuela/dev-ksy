@@ -68,9 +68,11 @@ $route['editUser'] = 'user/update_user';
 $route['delUsuario'] = 'user/delete_user';
 
 $route['Gestionar-Categorias'] = 'category';
-$route['Categorias'] = 'category/get_categorys';
-$route['saveCategory'] = 'category/category';
-$route['getCateoria'] = 'category/get_category';
-$route['editCategory'] = 'category/update_category';
-$route['delCategoria'] = 'category/delete_category';
+$route['Categorias'] = 'category/get_categories';
+$route['saveCategory'] = 'category/create';
+$route['getCategory'] = 'category/get_category';
+$route['editCategory'] = 'category/update';
+$route['delCategory'] = 'category/delete';
+
+
 

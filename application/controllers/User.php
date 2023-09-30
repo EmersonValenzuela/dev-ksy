@@ -94,7 +94,7 @@ class User extends CI_Controller
     public function delete_user()
     {
         $id = $this->input->post('id');
-        $result = $this->ModelUser->delete(array('idusuario' => $id, 'usuarios'), 'usuario');
+        $result = $this->ModelUser->delete(array('idusuario' => $id), 'usuario');
         $jsonData['rsp'] = $result;
         header('Content-type: application/json; charset=utf-8');
         echo json_encode($jsonData);
