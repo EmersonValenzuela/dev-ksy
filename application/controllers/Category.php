@@ -23,9 +23,9 @@ class Category extends CI_Controller
         $descripcion = $this->input->post('description');
         $condition = $this->input->post('condition');
         $data = array(
-            "nombre" => $names_c,
-            "descripcion" => $descripcion,
-            "condicion" => $condition,
+            "nombreCategoria" => $names_c,
+            "descripcionCategoria" => $descripcion,
+            "condicionCategoria" => $condition,
         );
         $result = $this->ModelCategory->insert($data, 'categoria');
         if ($result) {
@@ -47,9 +47,9 @@ class Category extends CI_Controller
         $descripcion = $this->input->post('description');
         $condition = $this->input->post('condition');
         $data = array(
-            "nombre" => $names_c,
-            "descripcion" => $descripcion,
-            "condicion" => $condition,
+            "nombreCategoria" => $names_c,
+            "descripcionCategoria" => $descripcion,
+            "condicionCategoria" => $condition,
         );
         $result = $this->ModelCategory->update(array('idcategoria' => $id_category),$data, 'categoria');
         if ($result) {

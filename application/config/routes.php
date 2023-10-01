@@ -75,4 +75,11 @@ $route['editCategory'] = 'category/update';
 $route['delCategory'] = 'category/delete';
 
 
+$route['Gestionar-Articulos'] = 'article';
+$route['Articulos'] = 'article/get_articles';
+$route['saveArticles'] = 'article/create';
+$route['getArticles'] = 'article/get_articles';
+$route['editArticle'] = 'article/update';
+$route['delArticle'] = 'article/delete';
+
 

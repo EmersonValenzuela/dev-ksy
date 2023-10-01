@@ -142,11 +142,11 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-board"></use>
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
                                         </svg>
                                         <svg class="fill-icon">
                                             <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
-                                        </svg><span class="lan-3">Almacén
+                                        </svg><span class="lan-3">Gestion
                                         </span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a class="lan-4" href="<?= base_url('Gestionar-Usuarios') ?>">Usuarios</a></li>
@@ -206,40 +206,24 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
-                                <li class="sidebar-main-title">
+                                </li><li class="sidebar-main-title">
                                     <div>
-                                        <h6>ACCESO</h6>
+                                        <h6>ALMACEN</h6>
                                     </div>
                                 </li>
-                                <li class="sidebar-list">
-                                    <i class="fa fa-thumb-tack"></i>
-                                    <a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Gestionar-Usuarios') ?>">
+                                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                    <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-landing-page">
-                                            </use>
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-landing-page">
-                                            </use>
-                                        </svg>
-                                        <span>Usuarios</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-list">
-                                    <i class="fa fa-thumb-tack"></i>
-                                    <a class="sidebar-link sidebar-title link-nav" href="<?= base_url('Gestionar-Categorias') ?>">
-                                        <svg class="stroke-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-landing-page">
-                                            </use>
-                                        </svg>
-                                        <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-landing-page">
-                                            </use>
-                                        </svg>
-                                        <span>Categorias</span>
-                                    </a>
-                                </li>
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                        </svg><span class="lan-3">Logistica
+                                        </span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a class="lan-4" href="<?= base_url('Gestionar-Categorias') ?>">Categorias</a></li>
+                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Arrticulos')?>">Articulo</a></li>
+                                    </ul>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

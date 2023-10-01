@@ -10,13 +10,13 @@ $(($) => {
 		},
 		columns: [
 			{
-				data: "nombre",
+				data: "nombreCategoria",
 			},
 			{
-				data: "descripcion",
+				data: "descripcionCategoria",
 			},
 			{
-				data: "condicion",
+				data: "condicionCategoria	",
 				render: function (data, type, row) {
 					return condition(data);
 				},
@@ -71,17 +71,13 @@ $(($) => {
 		})
 			.done((v) => {
 				console.log(v.data);
-				alert_type(
-					"Categoria añadido correctamente",
-					"Vista Categoria",
-					"success"
-				);
+				alert_type("Categoria añadido correctamente","Vista Categoria",	"success");
 
 				const rowNode = t.row
 					.add({
-						nombre: v.data.nombre,
-						descripcion: v.data.descripcion,
-						condicion: v.data.condicion,
+						nombreCategoria: v.data.nombreCategoria,
+						descripcionCategoria: v.data.descripcionCategoria,
+						condicionCategoria: v.data.condicionCategoria,
 						idcategoria: v.id,
 					})
 					.draw()
@@ -125,9 +121,9 @@ $(($) => {
 			.done((data) => {
 				const array = data.result;
 				array.forEach((item) => {
-					$("#names_c").val(item.nombre);
-					$("#description").val(item.descripcion);
-					$("#condition").val(item.condicion).change();
+					$("#names_c").val(item.nombreCategoria);
+					$("#description").val(item.descripcionCategoria);
+					$("#condition").val(item.condicionCategoria).change();
 					$("#mdl_add").modal("show");
 				});
 			})

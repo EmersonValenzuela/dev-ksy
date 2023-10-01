@@ -74,8 +74,7 @@ $(($) => {
         e.preventDefault();
         let btn = document.querySelector("#btn_send");
         let f = $(this);
-
-
+        
         $.ajax({
             url: "saveUser",
             type: "post",
@@ -97,7 +96,7 @@ $(($) => {
                     tipo_documento: v.data.tipo_documento,
                     num_documento: v.data.num_documento,
                     condicion: v.data.condicion,
-                    idusuario: v.data.idusuario,
+                    idusuario: v.id,
                 }).draw().node();
                 $(rowNode)
                     .css('color', 'green')
@@ -107,6 +106,11 @@ $(($) => {
             })
             .fail((e) => {
                 console.log(e.responseText);
+            }).always(() => {
+                btn.innerHTML =
+                '<i class="fa fa-save"></i> Guardar Usuario';
+            btn.disabled = false;
+            btn.form.firstElementChild.disabled = false;
             });
     });
 
@@ -153,44 +157,38 @@ $(($) => {
             console.error(e.responseText);
         });
     });
-    t.on('click', '.btn_delete', function (e) {
-        let data = t.row(e.target.closest('tr')).data();
+    t.on("click", ".btn_delete", function (e) {
+		let data = t.row(e.target.closest("tr")).data();
 
-
-        //EDITAR TEXTO
-        swal({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "delUsuario",
-                    type: "post",
-                    data: { id: data.idusuario },
-                    dataType: "json",
-                    beforeSend: () => { }
-                }).done((data) => {
-                    if (data.rsp = true) {
-                        alert_type("Usuario eliminado correctamente", "Vista Usuario", "success");
-                        t.ajax.reload();
-                    }
-                }).fail((e) => {
-                    console.error(e.responseText);
-                });
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
-        })
-
-    });
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$.ajax({
+					url: "delUsuario",
+					type: "post",
+					data: { id: data.idusuario },
+					dataType: "json",
+					beforeSend: () => {},
+				})
+					.done((data) => {
+						if ((data.rsp = true)) {
+							Swal.fire("Deleted!", "Your file has been deleted.", "success");
+							t.ajax.reload();
+						}
+					})
+					.fail((e) => {
+						console.error(e.responseText);
+					});
+			}
+		});
+	});
 
 });
 
