@@ -16,7 +16,7 @@ $(($) => {
 				data: "descripcionCategoria",
 			},
 			{
-				data: "condicionCategoria	",
+				data: "condicionCategoria",
 				render: function (data, type, row) {
 					return condition(data);
 				},

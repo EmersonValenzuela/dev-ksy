@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-10-2023 a las 00:45:48
+-- Tiempo de generación: 04-10-2023 a las 01:26:20
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_sistema`
 --
-CREATE DATABASE IF NOT EXISTS `bd_sistema` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `bd_sistema`;
 
 -- --------------------------------------------------------
 
@@ -29,17 +27,23 @@ USE `bd_sistema`;
 -- Estructura de tabla para la tabla `articulo`
 --
 
-DROP TABLE IF EXISTS `articulo`;
 CREATE TABLE `articulo` (
   `idarticulo` int(11) NOT NULL,
-  `idcategoria` int(11) NOT NULL,
-  `codigo` varchar(50) DEFAULT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `descripcion` varchar(256) DEFAULT NULL,
-  `imagen` varchar(50) DEFAULT NULL,
-  `condicion` tinyint(1) NOT NULL DEFAULT 1
+  `categoria` int(11) NOT NULL,
+  `codigo_articulo` varchar(50) DEFAULT NULL,
+  `nombre_articulo` varchar(100) NOT NULL,
+  `stock_articulo` int(11) NOT NULL,
+  `descripcion_articulo` varchar(256) DEFAULT NULL,
+  `imagen_articulo` varchar(50) DEFAULT NULL,
+  `condicion_articulo` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `articulo`
+--
+
+INSERT INTO `articulo` (`idarticulo`, `categoria`, `codigo_articulo`, `nombre_articulo`, `stock_articulo`, `descripcion_articulo`, `imagen_articulo`, `condicion_articulo`) VALUES
+(1, 1, '132645789', 'samsung A12', 20, 'pantalla oem', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -47,22 +51,21 @@ CREATE TABLE `articulo` (
 -- Estructura de tabla para la tabla `categoria`
 --
 
-DROP TABLE IF EXISTS `categoria`;
 CREATE TABLE `categoria` (
   `idcategoria` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `descripcion` varchar(256) DEFAULT NULL,
-  `condicion` tinyint(1) NOT NULL DEFAULT 1
+  `nombreCategoria` varchar(50) NOT NULL,
+  `descripcionCategoria` varchar(256) DEFAULT NULL,
+  `condicionCategoria` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`idcategoria`, `nombre`, `descripcion`, `condicion`) VALUES
-(2, 'cC', 'qweqwe', 1),
-(3, 'qweqweqweqw', 'qweqweqwe', 1),
-(4, 'qwdqwd', 'qwdqwd', 0);
+INSERT INTO `categoria` (`idcategoria`, `nombreCategoria`, `descripcionCategoria`, `condicionCategoria`) VALUES
+(1, 'Pantallas LCD', 'Pantallas LCD equipos basicos', 1),
+(2, 'TAPA', 'TAPAS TODO TIPO', 1),
+(3, 'BATERIA', 'BATERIAS INTERNAS', 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +73,6 @@ INSERT INTO `categoria` (`idcategoria`, `nombre`, `descripcion`, `condicion`) VA
 -- Estructura de tabla para la tabla `detalle_ingreso`
 --
 
-DROP TABLE IF EXISTS `detalle_ingreso`;
 CREATE TABLE `detalle_ingreso` (
   `iddetalle_ingreso` int(11) NOT NULL,
   `idingreso` int(11) NOT NULL,
@@ -83,7 +85,6 @@ CREATE TABLE `detalle_ingreso` (
 --
 -- Disparadores `detalle_ingreso`
 --
-DROP TRIGGER IF EXISTS `tr_updStockIngreso`;
 DELIMITER $$
 CREATE TRIGGER `tr_updStockIngreso` AFTER INSERT ON `detalle_ingreso` FOR EACH ROW BEGIN
  UPDATE articulo SET stock = stock + NEW.cantidad 
@@ -98,7 +99,6 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `detalle_venta`
 --
 
-DROP TABLE IF EXISTS `detalle_venta`;
 CREATE TABLE `detalle_venta` (
   `iddetalle_venta` int(11) NOT NULL,
   `idventa` int(11) NOT NULL,
@@ -111,7 +111,6 @@ CREATE TABLE `detalle_venta` (
 --
 -- Disparadores `detalle_venta`
 --
-DROP TRIGGER IF EXISTS `tr_updStockVenta`;
 DELIMITER $$
 CREATE TRIGGER `tr_updStockVenta` AFTER INSERT ON `detalle_venta` FOR EACH ROW BEGIN
  UPDATE articulo SET stock = stock - NEW.cantidad 
@@ -126,7 +125,6 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `ingreso`
 --
 
-DROP TABLE IF EXISTS `ingreso`;
 CREATE TABLE `ingreso` (
   `idingreso` int(11) NOT NULL,
   `idproveedor` int(11) NOT NULL,
@@ -146,7 +144,6 @@ CREATE TABLE `ingreso` (
 -- Estructura de tabla para la tabla `permiso`
 --
 
-DROP TABLE IF EXISTS `permiso`;
 CREATE TABLE `permiso` (
   `idpermiso` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL
@@ -171,7 +168,6 @@ INSERT INTO `permiso` (`idpermiso`, `nombre`) VALUES
 -- Estructura de tabla para la tabla `persona`
 --
 
-DROP TABLE IF EXISTS `persona`;
 CREATE TABLE `persona` (
   `idpersona` int(11) NOT NULL,
   `tipo_persona` varchar(20) NOT NULL,
@@ -189,7 +185,6 @@ CREATE TABLE `persona` (
 -- Estructura de tabla para la tabla `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -210,8 +205,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`, `direccion`, `telefono`, `email`, `cargo`, `login`, `clave`, `imagen`, `condicion`) VALUES
-(10, 'diego', 'DNI', '234', 'av. jorgue chavez', '23145', '314255', '1', 'admin', 'admin', '', 1),
-(11, 'lolo', 'DNI', '321245454', 'sdas2134', '1234253', 'sdasda', '2', 'admin1', 'admin1', '', 1);
+(16, 'Diego Mendoza', 'DNI', '70056869', 'diego', '929158810', 'wefwewe', '1', 'admin', 'admin', '', 0);
 
 -- --------------------------------------------------------
 
@@ -219,7 +213,6 @@ INSERT INTO `usuario` (`idusuario`, `nombre`, `tipo_documento`, `num_documento`,
 -- Estructura de tabla para la tabla `venta`
 --
 
-DROP TABLE IF EXISTS `venta`;
 CREATE TABLE `venta` (
   `idventa` int(11) NOT NULL,
   `idcliente` int(11) NOT NULL,
@@ -242,14 +235,15 @@ CREATE TABLE `venta` (
 --
 ALTER TABLE `articulo`
   ADD PRIMARY KEY (`idarticulo`),
-  ADD UNIQUE KEY `nombre_UNIQUE` (`nombre`),
-  ADD KEY `fk_articulo_categoria_idx` (`idcategoria`);
+  ADD UNIQUE KEY `nombre_UNIQUE` (`nombre_articulo`),
+  ADD KEY `fk_articulo_categoria_idx` (`categoria`);
 
 --
 -- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`idcategoria`);
+  ADD PRIMARY KEY (`idcategoria`),
+  ADD UNIQUE KEY `nombre_UNIQUE` (`nombreCategoria`);
 
 --
 -- Indices de la tabla `detalle_ingreso`
@@ -310,7 +304,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idarticulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -352,7 +346,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
@@ -368,7 +362,7 @@ ALTER TABLE `venta`
 -- Filtros para la tabla `articulo`
 --
 ALTER TABLE `articulo`
-  ADD CONSTRAINT `fk_articulo_categoria` FOREIGN KEY (`idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_articulo_categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `detalle_ingreso`

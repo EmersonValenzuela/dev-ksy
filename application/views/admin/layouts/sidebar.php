@@ -222,7 +222,7 @@
                                         </span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a class="lan-4" href="<?= base_url('Gestionar-Categorias') ?>">Categorias</a></li>
-                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Arrticulos')?>">Articulo</a></li>
+                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Articulos')?>">Articulo</a></li>
                                     </ul>
                             </ul>
                         </div>

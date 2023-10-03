@@ -91,6 +91,15 @@
                                           </div>
                                       </div>
                                       <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="mb-3">
+                                                  <label class="form-label" for="names_a">Categoria</label>
+                                                  <input class="form-control input-air-primary" id="names_a" name="names_a" type="text" placeholder="Ejem. Nombre de Articulo" autofocus>
+                                                  <input class="form-control input-air-primary" id="id_article" name="id_article" type="hidden" placeholder="Ejem. Nombre de Articulo" autofocus>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
                                           <div class="col-md-4">
                                               <div class="mb-3">
                                                   <label class="form-label" for="stock">Stock</label>
@@ -125,8 +134,8 @@
                                           </div>
                                           <div class="card-footer text-end">
                                               <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
-                                              <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Categoria</button>
-                                              <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
+                                              <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Articulo</button>
+                                              <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Articulo</button>
                                           </div>
                                       </div>
                               </form>

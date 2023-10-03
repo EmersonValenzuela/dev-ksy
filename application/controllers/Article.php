@@ -31,4 +31,11 @@ class Article extends CI_Controller
         }
         echo json_encode($array);
     }
+    public function get_article()
+    {
+        $result = $this ->ModelArticle->get_article(array('idarticulo' => $this->input->post('i')));
+        $jsonData["result"] = $result;
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($jsonData);
+    }
 }
