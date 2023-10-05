@@ -82,16 +82,14 @@
                               <form class="form-bookmark theme-form" id="frm_article">
                                   <div class="card-body">
                                       <div class="row">
-                                          <div class="col-md-6">
+                                          <div class="col-md-7">
                                               <div class="mb-3">
                                                   <label class="form-label" for="names_a">Nombre</label>
                                                   <input class="form-control input-air-primary" id="names_a" name="names_a" type="text" placeholder="Ejem. Nombre de Articulo" autofocus>
                                                   <input class="form-control input-air-primary" id="id_article" name="id_article" type="hidden" placeholder="Ejem. Nombre de Articulo" autofocus>
                                               </div>
                                           </div>
-                                      </div>
-                                      <div class="row">
-                                          <div class="col-md-6">
+                                          <div class="col-md-4">
                                               <div class="mb-3">
                                                   <label class="form-label" for="names_a">Categoria</label>
                                                   <input class="form-control input-air-primary" id="names_a" name="names_a" type="text" placeholder="Ejem. Nombre de Articulo" autofocus>
@@ -106,13 +104,13 @@
                                                   <input class="form-control input-air-primary" id="stock" type="text" placeholder="Ejem. tres" name="stock">
                                               </div>
                                           </div>
-                                          <div class="row">
-                                              <div class="col-md-4">
-                                                  <div class="mb-3">
-                                                      <label class="form-label" for="description">Descripcion</label>
-                                                      <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
-                                                  </div>
+                                          <div class="col-md-7">
+                                              <div class="mb-3">
+                                                  <label class="form-label" for="description">Descripcion</label>
+                                                  <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
                                               </div>
+                                          </div>
+                                          <div class="row">
                                               <div class="col-md-6">
                                                   <div class="mb-3">
                                                       <label class="form-label" for="image">Imagen</label>

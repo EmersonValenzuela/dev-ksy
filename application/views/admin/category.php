@@ -85,15 +85,15 @@
                                                           <input class="form-control input-air-primary" id="id_category" name="id_category" type="hidden" placeholder="Ejem. Nombre de Categoria" autofocus>
                                                       </div>
                                                   </div>
-                                              </div>
-                                              <div class="row">
-                                                  <div class="col-md-4">
+                                                  <div class="col-md-6">
                                                       <div class="mb-3">
                                                           <label class="form-label" for="description">Descripcion</label>
                                                           <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
                                                       </div>
                                                   </div>
-                                                  <div class="col-md-4">
+                                              </div>
+                                              <div class="row">
+                                                 <div class="col-md-4">
                                                       <div class="mb-3">
                                                           <label class="form-label" for="condition">Condición</label>
                                                           <select class="form-select input-air-primary" id="condition" name="condition">
