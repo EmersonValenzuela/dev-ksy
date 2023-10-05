@@ -8,7 +8,7 @@ class ModelArticle extends CI_Model
     {
         if ($where != null) {
             $this->db->select('*');
-            $this->db->from('categoria');
+            $this->db->from('articulo');
             $this->db->where($where);
             $query = $this->db->get();
             return $query->result();
