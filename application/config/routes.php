@@ -82,9 +82,9 @@ $route['getArticles'] = 'article/get_articles';
 $route['editArticle'] = 'article/update';
 $route['delArticle'] = 'article/delete';
 
-$route['Gestionar-Persona'] = 'persona';
-$route['Personas'] = 'people/get_peoples';
-$route['savePeoples'] = 'people/create';
-$route['getPeoples'] = 'people/get_peoples';
-$route['editPeople'] = 'people/update';
-$route['delPeople'] = 'people/delete';
+$route['Gestionar-Cliente'] = 'Cliente';
+$route['Clientes'] = 'client/get_clients';
+$route['saveclients'] = 'client/create';
+$route['getCliente'] = 'client/get_client';
+$route['editClient'] = 'client/update';
+$route['delClient'] = 'client/delete';
