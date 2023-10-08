@@ -12,9 +12,9 @@ class Client extends CI_Controller
     {
         $data['links'] = array();
         $data['scripts'] = array(
-            '<script src="' . base_url() . 'modules/js/client.js"></script>'
+            '<script src="' . base_url() .'modules/js/client.js"></script>'
         );
-        $data['title'] = 'CLientes';
+        $data['title'] = 'Clientes';
         $this->template->load('admin/template', 'admin/client', $data);
     }
     public  function create()
@@ -86,7 +86,7 @@ class Client extends CI_Controller
     //API DATA 
     public function get_clients()
     {
-        $result = $this->ModelClient->get_clients();
+        $result = $this->ModelClient->get_client();
         if ($result) {
             foreach ($result as $row) {
                 $array['data'][] = $row;
@@ -98,7 +98,7 @@ class Client extends CI_Controller
     }
     public function get_client()
     {
-        $result = $this->ModelClient->get_clients(array('idcliente' => $this->input->post('i')));
+        $result = $this->ModelClient->get_client(array('idcliente' => $this->input->post('i')));
         $jsonData["result"] = $result;
         header('Content-type: application/json; charset=utf-8');
         echo json_encode($jsonData);

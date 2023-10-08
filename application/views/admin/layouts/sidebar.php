@@ -134,7 +134,7 @@
                                         <li> <a href="dashboard-08.html">POS</a></li>
                                     </ul>
                                 </li>
-                               <li class="sidebar-main-title">
+                                <li class="sidebar-main-title">
                                     <div>
                                         <h6>ACCESOS</h6>
                                     </div>
@@ -150,63 +150,27 @@
                                         </span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a class="lan-4" href="<?= base_url('Gestionar-Usuarios') ?>">Usuarios</a></li>
-                                        <li><a class="lan-5" href="<?= base_url()?>">Permisos</a></li>
+                                        <li><a class="lan-5" href="<?= base_url() ?>">Permisos</a></li>
                                     </ul>
                                 <li class="sidebar-main-title">
                                     <div>
-                                        <h6>CONTROL</h6>
+                                        <h6>VENTAS</h6>
                                     </div>
                                 </li>
-                                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title" href="#">
+                                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                    <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-form"></use>
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-form">
-                                            </use>
-                                        </svg><span>Forms</span></a>
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                        </svg><span class="lan-3">Ventas
+                                        </span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a class="submenu-title" href="#">Form
-                                                Controls<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
-                                            <ul class="nav-sub-childmenu submenu-content">
-                                                <li><a href="form-validation.html">Form
-                                                        Validation</a></li>
-                                                <li><a href="base-input.html">Base
-                                                        Inputs</a></li>
-                                                <li><a href="radio-checkbox-control.html">Checkbox
-                                                        & Radio</a></li>
-                                                <li><a href="input-group.html">Input
-                                                        Groups</a></li>
-                                                <li> <a href="input-mask.html">Input
-                                                        Mask</a></li>
-                                                <li><a href="megaoptions.html">Mega
-                                                        Options</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="submenu-title" href="#">Form
-                                                Widgets<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
-                                            <ul class="nav-sub-childmenu submenu-content">
-                                                <li><a href="datepicker.html">Datepicker</a></li>
-                                                <li><a href="touchspin.html">Touchspin</a></li>
-                                                <li><a href="select2.html">Select2</a></li>
-                                                <li><a href="switch.html">Switch</a></li>
-                                                <li><a href="typeahead.html">Typeahead</a></li>
-                                                <li><a href="clipboard.html">Clipboard</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="submenu-title" href="#">Form
-                                                layout<span class="sub-arrow"><i class="fa fa-angle-right"></i></span></a>
-                                            <ul class="nav-sub-childmenu submenu-content">
-                                                <li><a href="form-wizard.html">Form
-                                                        Wizard 1</a></li>
-                                                <li><a href="form-wizard-two.html">Form
-                                                        Wizard 2</a></li>
-                                                <li><a href="two-factor.html">Two
-                                                        Factor</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a class="lan-4" href="<?= base_url('Gestionar-Clientes') ?>">Clientes</a></li>
                                     </ul>
-                                </li><li class="sidebar-main-title">
+                                </li>
+                                <li class="sidebar-main-title">
                                     <div>
                                         <h6>ALMACEN</h6>
                                     </div>
@@ -222,8 +186,9 @@
                                         </span></a>
                                     <ul class="sidebar-submenu">
                                         <li><a class="lan-4" href="<?= base_url('Gestionar-Categorias') ?>">Categorias</a></li>
-                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Articulos')?>">Articulo</a></li>
+                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Articulos') ?>">Articulo</a></li>
                                     </ul>
+                                </li>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
