@@ -88,3 +88,10 @@ $route['saveclients'] = 'client/create';
 $route['getCliente'] = 'client/get_client';
 $route['editClient'] = 'client/update';
 $route['delClient'] = 'client/delete';
+
+$route['Gestionar-Proveedores'] = 'supplier';
+$route['Proveedores'] = 'supplier/get_suppliers';
+$route['saveSupplier'] = 'supplier/create';
+$route['getSupplier'] = 'supplier/get_supplier';
+$route['editSupplier'] = 'supplier/update';
+$route['delSupplier'] = 'supplier/delete';
