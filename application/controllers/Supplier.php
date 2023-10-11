@@ -18,6 +18,44 @@ class Supplier extends CI_Controller
         $this->template->load('admin/template', 'admin/supplier', $data);
     }
 
+    public function create()
+    {
+        $names_s = $this->input->post('names_s');
+        $type_doc = $this->input->post('type_doc');
+        $number_doc = $this->input->post('number_doc');
+        $addres = $this->input->post('addres');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
+        $data = array(
+            "nombre" => $names_s,
+            "tipo_documento" => $type_doc,
+            "num_documento" => $number_doc,
+            "direccion" => $addres,
+            "phone" => $phone,
+            "email" => $email
+        );
+        $result = $this->ModelSupplier->insert($data, 'proveedor');
+        if ($result) {
+            $jsonData['rsp'] = 200;
+            $jsonData['id'] = $result;
+        }else {
+            $jsonData['rsp'] =400;
+        }
+        $jsonData["data"] = $data;
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($jsonData);
+    }
+
+    public function update()
+    {
+        $id_supplier = $this->input->post('id_supplier');
+        $names_s=$this->input->post('names_s');
+        $type_doc=$this->input->post('type_doc');
+        $number_doc=$this->input->post('number_doc');
+        $addres=$this->input->post('addres');
+        
+
+    }
 
 
 
