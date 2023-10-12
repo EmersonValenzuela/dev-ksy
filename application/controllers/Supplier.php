@@ -27,19 +27,19 @@ class Supplier extends CI_Controller
         $phone = $this->input->post('phone');
         $email = $this->input->post('email');
         $data = array(
-            "nombre" => $names_s,
-            "tipo_documento" => $type_doc,
-            "num_documento" => $number_doc,
-            "direccion" => $addres,
-            "phone" => $phone,
-            "email" => $email
+            "nombreProveedor" => $names_s,
+            "tipo_documentoProveedor" => $type_doc,
+            "num_documentoProveedor" => $number_doc,
+            "direccionProveedor" => $addres,
+            "telefonoProveedor" => $phone,
+            "emailProveedor" => $email
         );
         $result = $this->ModelSupplier->insert($data, 'proveedor');
         if ($result) {
             $jsonData['rsp'] = 200;
             $jsonData['id'] = $result;
-        }else {
-            $jsonData['rsp'] =400;
+        } else {
+            $jsonData['rsp'] = 400;
         }
         $jsonData["data"] = $data;
         header('Content-Type: application/json; charset=utf-8');
@@ -49,17 +49,41 @@ class Supplier extends CI_Controller
     public function update()
     {
         $id_supplier = $this->input->post('id_supplier');
-        $names_s=$this->input->post('names_s');
-        $type_doc=$this->input->post('type_doc');
-        $number_doc=$this->input->post('number_doc');
-        $addres=$this->input->post('addres');
-        
+        $names_s = $this->input->post('names_s');
+        $type_doc = $this->input->post('type_doc');
+        $number_doc = $this->input->post('number_doc');
+        $addres = $this->input->post('addres');
+        $phone = $this->input->post('phone');
+        $email = $this->input->post('email');
+        $data = array(
+            "nombreProveedor" => $names_s,
+            "tipo_documentoProveedor" => $type_doc,
+            "num_documentoProveedor" => $number_doc,
+            "direccionProveedor" => $addres,
+            "telefonoProveedor" => $phone,
+            "emailProveedor" => $email
+        );
+        $result = $this->ModelSupplier->update(array('idproveedor' => $id_supplier), $data, 'proveedor');
+        if ($result) {
+            $jsonData['rsp'] = 200;
+            $jsonData['id'] = $result;
+        } else {
+            $jsonData['rsp'] = 400;
+        }
 
+        $jsonData["data"] = $data;
+        header(('Content-Type; application/json; charset=utf-8'));
+        echo json_encode($jsonData);
     }
 
-
-
-
+    public function delete()
+    {
+        $id = $this->input->post('');
+        $result = $this->ModelSupplier->delete(array('idproveedor' => $id), 'proveedor');
+        $jsonData['rsp'] = $result;
+        header(('Content-Type; application/json; charset=utf-8'));
+        echo json_encode($jsonData);
+    }
 
     //API DATA
     public function get_suppliers()
