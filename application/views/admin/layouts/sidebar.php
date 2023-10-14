@@ -149,7 +149,7 @@
                                         </svg><span class="lan-3">Gestion
                                         </span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a class="lan-4" href="<?= base_url('Gestionar-Usuarios') ?>">Usuarios</a></li>
+                                        <li><a class="lan-4" href="Gestionar-Usuarios">Usuarios</a></li>
                                         <li><a class="lan-5" href="<?= base_url() ?>">Permisos</a></li>
                                     </ul>
                                 <li class="sidebar-main-title">
@@ -185,8 +185,8 @@
                                         </svg><span class="lan-3">Logistica
                                         </span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a class="lan-4" href="<?= base_url('Gestionar-Categorias') ?>">Categorias</a></li>
-                                        <li><a class="lan-5" href="<?= base_url('Gestionar-Articulos') ?>">Articulo</a></li>
+                                        <li><a class="lan-4" href="Gestionar-Categorias">Categorias</a></li>
+                                        <li><a class="lan-5" href="Gestionar-Articulos">Articulo</a></li>
                                     </ul>
                                 </li>
                             </ul>
