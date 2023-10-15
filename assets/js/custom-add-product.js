@@ -5,6 +5,12 @@
     placeholder: "Enter your messages...",
   });
 
+  var editor3 = new Quill("#editor3", {
+    modules: { toolbar: "#toolbar3" },
+    theme: "snow",
+    placeholder: "Enter your messages...",
+  });
+
   var editor4 = new Quill("#editor4", {
     modules: { toolbar: "#toolbar4" },
     theme: "snow",
