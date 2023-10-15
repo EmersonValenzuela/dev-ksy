@@ -13,8 +13,6 @@ class ModelArticle extends CI_Model
             $query = $this->db->get();
             return $query->result();
         }
-
-
         return $this->db
             ->select('a.*')
             ->select('c.*')
@@ -22,6 +20,13 @@ class ModelArticle extends CI_Model
             ->join('categoria c', 'c.idcategoria = a.categoria')
             ->get()
             ->result();
+    }
+    public function selec_table ($table)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $query = $this->db->get();
+        return $query->result();
     }
     public function insert($data, $table)
     {
