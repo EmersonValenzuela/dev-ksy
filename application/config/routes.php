@@ -78,9 +78,9 @@ $route['delCategory'] = 'category/delete';
 $route['Gestionar-Articulos'] = 'article';
 $route['Articulos'] = 'article/get_articles';
 $route['saveArticles'] = 'article/create';
+$route['getArticles'] = 'article/get_articles';
 $route['editArticle'] = 'article/update';
 $route['delArticle'] = 'article/delete';
-$route['fillcategory'] = 'article/fillCategory';
 
 $route['Gestionar-Clientes'] = 'client';
 $route['Clientes'] = 'client/get_client';
