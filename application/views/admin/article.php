@@ -96,8 +96,8 @@
                                                                           </div>
                                                                       </div>
                                                                       <div class="product-tab-content">
-                                                                          <h6>Add Product Details</h6>
-                                                                          <p>Add Product name & details</p>
+                                                                          <h6>Agredar Detalle de Producto</h6>
+                                                                          <p>Agregar nombre y detalle de Producto</p>
                                                                       </div>
                                                                   </a></li>
                                                               <li class="nav-item"> <a class="nav-link" id="gallery-product-tab" data-bs-toggle="pill" href="#gallery-product" role="tab" aria-controls="gallery-product" aria-selected="false">
@@ -109,7 +109,7 @@
                                                                           </div>
                                                                       </div>
                                                                       <div class="product-tab-content">
-                                                                          <h6>Product gallery</h6>
+                                                                          <h6>Galeria Producto</h6>
                                                                           <p>thumbnail & Add Product Gallery</p>
                                                                       </div>
                                                                   </a></li>
@@ -122,8 +122,8 @@
                                                                           </div>
                                                                       </div>
                                                                       <div class="product-tab-content">
-                                                                          <h6>Product Categories</h6>
-                                                                          <p>Add Product category, Status and Tags</p>
+                                                                          <h6>Categorias de Prodcuto</h6>
+                                                                          <p>Agregar Categoria del producto, Estado y Etiquetas</p>
                                                                       </div>
                                                                   </a></li>
                                                               <li class="nav-item"><a class="nav-link" id="pricings-tab" data-bs-toggle="pill" href="#pricings" role="tab" aria-controls="pricings" aria-selected="false">
@@ -135,8 +135,8 @@
                                                                           </div>
                                                                       </div>
                                                                       <div class="product-tab-content">
-                                                                          <h6>Selling prices</h6>
-                                                                          <p>Add Product basic price & Discount</p>
+                                                                          <h6>Precios de venta</h6>
+                                                                          <p>Agregar precio básico del producto y descuento</p>
                                                                       </div>
                                                                   </a>
                                                               </li>
@@ -147,11 +147,11 @@
                                                               <div class="tab-pane fade show active" id="detail-product" role="tabpanel" aria-labelledby="detail-product-tab">
                                                                   <div class="sidebar-body">
                                                                       <form class="row g-2">
-                                                                          <label class="form-label col-12 m-0" for="productTitle1" >Product Title <span class="txt-danger"> *</span></label>
+                                                                          <label class="form-label col-12 m-0" for="productTitle1" >Titulo del producto<span class="txt-danger"> *</span></label>
                                                                           <div class="col-12 custom-input">
                                                                               <input class="form-control" id="productTitle1" name=" pdttitulo"type="text" required="">
                                                                               <div class="valid-feedback">Looks good!</div>
-                                                                              <div class="invalid-feedback">A product name is required and recommended to be unique.</div>
+                                                                              <div class="invalid-feedback">Se requiere y se recomienda que un nombre de producto sea único.</div>
                                                                           </div>
                                                                           <div class="col-12">
                                                                               <div class="toolbar-box">
@@ -170,7 +170,7 @@
                                                                                           <button class="ql-video"></button></span></div>
                                                                                   <div id="editor2"></div>
                                                                               </div>
-                                                                              <p class="f-light">Improve product visibility by adding a compelling description.</p>
+                                                                              <p class="f-light">Mejore la visibilidad del producto agregando una descripción convincente.</p>
                                                                           </div>
                                                                       </form>
 
@@ -179,24 +179,24 @@
                                                               <div class="tab-pane fade" id="gallery-product" role="tabpanel" aria-labelledby="gallery-product-tab">
                                                                   <div class="sidebar-body">
                                                                       <div class="product-upload">
-                                                                          <p>Product Image </p>
+                                                                          <p>Imagen del producto</p>
                                                                           <form class="dropzone dropzone-light" id="multiFileUploadA" action="/upload.php" name="prdImage">
                                                                               <div class="dz-message needsclick">
                                                                                   <svg>
                                                                                       <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#file-upload"></use>
                                                                                   </svg>
-                                                                                  <h6>Drag your image here, or <a class="txt-primary" href="#!">browser</a></h6><span class="note needsclick">SVG,PNG,JPG or GIF</span>
+                                                                                  <h6>Arrastra tu imagen aquí, o<a class="txt-primary" href="#!">browser</a></h6><span class="note needsclick">SVG,PNG,JPG or GIF</span>
                                                                               </div>
                                                                           </form>
                                                                       </div>
                                                                       <div class="product-upload">
-                                                                          <p>Product Gallery</p>
+                                                                          <p>Galería de productos</p>
                                                                           <form class="dropzone dropzone-light" id="multiFileUploadB" action="/upload.php" name="prdGallery">
                                                                               <div class="dz-message needsclick">
                                                                                   <svg>
                                                                                       <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#file-upload1"></use>
                                                                                   </svg>
-                                                                                  <h6>Drag files here</h6><span class="note needsclick">Add Product Gallery Images</span>
+                                                                                  <h6>Drag files here</h6><span class="note needsclick">Agregar imágenes de la galería de productos</span>
                                                                               </div>
                                                                           </form>
                                                                       </div>
@@ -212,31 +212,31 @@
                                                                                       <div class="col-sm-6">
                                                                                           <div class="row g-2">
                                                                                               <div class="col-12">
-                                                                                                  <label class="form-label m-0" for="prdCategoria">Add Category</label>
+                                                                                                  <label class="form-label m-0" for="prdCategoria">Agregar categoría</label>
                                                                                               </div>
                                                                                               <div class="col-12">
                                                                                                   <select class="form-select" id="prdCategoria" name=prdCategoria required="">
-                                                                                                      <option selected="" value="">Toys & games</option>
+                                                                                                      <option selected="" value="">Opcional</option>
                                                                                                   </select>
-                                                                                                  <p class="f-light">A product can be added to a category</p>
+                                                                                                  <p class="f-light">Se puede agregar un producto a una categoría.</p>
                                                                                               </div>
                                                                                           </div>
                                                                                       </div>
                                                                                       <div class="col-sm-6">
                                                                                           <div class="row g-2 product-tag">
                                                                                               <div class="col-12">
-                                                                                                  <labe l class="form-label d-block m-0">Add Tag</label>
+                                                                                                  <labe l class="form-label d-block m-0">Agregar Etiquetas</label>
                                                                                               </div>
                                                                                               <div class="col-12">
                                                                                                   <input name="basic-tags" name ="prdTags"value="emerson,diego">
-                                                                                                  <p class="f-light">Products can be tagged</p>
+                                                                                                  <p class="f-light">Los productos se pueden etiquetar.</p>
                                                                                               </div>
                                                                                           </div>
                                                                                       </div>
                                                                                       <div class="col-12">
                                                                                           <div class="category-buton">
                                                                                               <button class="btn button-primary" id="showCategory">
-                                                                                                  <i class="me-2 fa fa-plus"> </i>Create New Category
+                                                                                                  <i class="me-2 fa fa-plus"> </i>Crear Nueva Categoria
                                                                                               </button>
                                                                                           </div>
                                                                                       </div>
@@ -247,13 +247,13 @@
                                                                                       <div class="col-sm-6">
                                                                                           <div class="row">
                                                                                               <div class="col-12">
-                                                                                                  <label class="form-label" for="publishStatus">Publish Status</label>
+                                                                                                  <label class="form-label" for="publishStatus">Estado de publicación</label>
                                                                                                   <select class="form-select" id="publishStatus" required="" name="prdStatus">
                                                                                                       <option selected="" value="">Publish</option>
-                                                                                                      <option>Drafts</option>
-                                                                                                      <option>Unpublish</option>
+                                                                                                      <option>Borradores</option>
+                                                                                                      <option>Despublicar</option>
                                                                                                   </select>
-                                                                                                  <p class="f-light">Choose the status</p>
+                                                                                                  <p class="f-light">Elige el estado</p>
                                                                                               </div>
                                                                                           </div>
                                                                                       </div>
@@ -268,15 +268,15 @@
                                                                       <form class="price-wrapper">
                                                                           <div class="row g-3 custom-input">
                                                                               <div class="col-sm-6">
-                                                                                  <label class="form-label" for="initialCost">Initial cost <span class="txt-danger">*</span></label>
+                                                                                  <label class="form-label" for="initialCost">Costo inicial<span class="txt-danger">*</span></label>
                                                                                   <input class="form-control" id="initialCost" type="number" name="prdInitialCost">
                                                                               </div>
                                                                               <div class="col-sm-6">
-                                                                                  <label class="form-label" for="sellingPrice">Selling price <span class="txt-danger">*</span></label>
+                                                                                  <label class="form-label" for="sellingPrice">Precio de venta <span class="txt-danger">*</span></label>
                                                                                   <input class="form-control" id="sellingPrice" type="number" name="prdSelling">
                                                                               </div>
                                                                               <div class="col-sm-6">
-                                                                                  <label class="form-label">Choose your currency</label>
+                                                                                  <label class="form-label">Elige tu moneda</label>
                                                                                   <select class="form-select" aria-label="Default select example" name="prdChoose">
                                                                                       <option selected="">Dollar $</option>
                                                                                       <option value="1">Euro €</option>
@@ -288,7 +288,7 @@
                                                                                   </select>
                                                                               </div>
                                                                               <div class="col-sm-6">
-                                                                                  <label class="form-label" for="productStock1">Product stocks<span class="txt-danger">*</span></label>
+                                                                                  <label class="form-label" for="productStock1">Existencias de productos<span class="txt-danger">*</span></label>
                                                                                   <input class="form-control" id="productStock1" type="number" name="prdStock">
                                                                               </div>
                                                                           </div>
