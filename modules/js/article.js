@@ -1,5 +1,6 @@
 $(($) => {
 	"use strict";
+	fill_category();
 	const title = $("#id_title");
 	const t = $("#data-articulo").DataTable({
 		language: {
@@ -10,22 +11,22 @@ $(($) => {
 		},
 		columns: [
 			{
+				data: "codigo_articulo",
+			},
+			{
+				data: "nombre_articulo",
+			},
+			{
 				data: "nombreCategoria",
 			},
 			{
-				data: "descripcionCategoria",
+				data: "stock_articulo",
 			},
 			{
-				data: "condicionCategoria	",
-				render: function (data, type, row) {
-					return condition(data);
-				},
+				data: "condicion_articulo",
 			},
 			{
-				data: "idcategoria",
-				render: function (data, type, row) {
-					return btnActions(data);
-				},
+				data: "idarticulo",
 			},
 		],
 	}); //*TABLA CATEGORIA
@@ -40,6 +41,17 @@ $(($) => {
 		$("#mdl_add").modal("show");
 	});
 	//****************** */
+	var editor2 = new Quill("#editor2", {
+		modules: { toolbar: "#toolbar2" },
+		theme: "snow",
+		placeholder: "Enter your messages...",
+	});
+
+	$("#showCategory").on("click", (e) => {
+		e.preventDefault();
+		title.html("Agregar Articulo");
+		$("#mdl_addCategory").modal("show");
+	});
 
 	$("#frm_article input").keyup(function () {
 		var form = $("#frm_article").find(':input[type="text"]');
@@ -71,7 +83,11 @@ $(($) => {
 		})
 			.done((v) => {
 				console.log(v.data);
-				alert_type("Articulo, añadido correctamente","Vista Categoria",	"success");
+				alert_type(
+					"Articulo, añadido correctamente",
+					"Vista Categoria",
+					"success"
+				);
 
 				const rowNode = t.row
 					.add({
@@ -84,7 +100,6 @@ $(($) => {
 					.node();
 				$(rowNode).css("color", "green").animate({ color: "black" });
 				$("#mdl_add").modal("hide");
-				$("#frm_article")[0].reset();
 			})
 			.fail((e) => {
 				console.log(e.responseText);
@@ -92,16 +107,6 @@ $(($) => {
 	});
 
 	//**FINALIZA PROCESO AGREGAR CATEGORIA */
-
-	t.on("mouseenter", "td", function () {
-		let colIdx = t.cell(this).index().column;
-		t.cells()
-			.nodes()
-			.each((el) => el.classList.remove("highlight"));
-		t.column(colIdx)
-			.nodes()
-			.each((el) => el.classList.add("highlight"));
-	});
 
 	//ACTION MODAL SHOW EDIT
 	t.on("click", ".editar_btn", function (e) {
@@ -184,9 +189,7 @@ $(($) => {
 	});
 });
 
-const clearform = () => {
-	$("#frm_article")[0].reset();
-};
+const clearform = () => {};
 
 const btnActions = (i) => {
 	return `<button type="button" class="editar_btn btn btn-pill btn-warning btn-air-warning"><i class="fa fa-edit"></i></button> <button type="button" class="btn_delete btn btn-pill btn-danger btn-air-danger" ><i class="fa fa-trash"></i></button>`;
@@ -211,4 +214,19 @@ const checkCampos = (obj) => {
 	} else {
 		return true;
 	}
+};
+const fill_category = () => {
+	var input = document.querySelector("input[name=basic-tags]");
+	new Tagify(input);
+	fetch("fillcategory")
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			data.forEach(function (option) {
+				const op = document.createElement("option");
+				op.value = option.idcategoria;
+				op.text = option.nombreCategoria;
+				document.getElementById("prdCategoria").appendChild(op);
+			});
+		});
 };
