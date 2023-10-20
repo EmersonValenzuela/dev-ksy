@@ -104,7 +104,7 @@
                                                   <input class="form-control input-air-primary" id="stock" type="text" placeholder="Ejem. tres" name="stock">
                                               </div>
                                           </div>
-<<<<<<< HEAD
+
                                       </div>
                                       <div class="row">
                                       </div>
@@ -114,7 +114,7 @@
                                           <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
                                       
                                         </div>
-=======
+
                                           <div class="col-md-7">
                                               <div class="mb-3">
                                                   <label class="form-label" for="description">Descripcion</label>
@@ -147,7 +147,7 @@
                                               <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Articulo</button>
                                           </div>
                                       </div>
->>>>>>> parent of 77c9cd8 (add_article)
+
                               </form>
                           </div>
                       </div>
