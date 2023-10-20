@@ -14,6 +14,8 @@
   <!-- Google font-->
   <link href="<?= base_url() ?>css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
   <link href="<?= base_url() ?>css-1?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/font-awesome.css">
   <!-- ico-font-->
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/vendors/icofont.css">
