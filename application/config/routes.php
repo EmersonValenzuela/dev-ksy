@@ -83,7 +83,7 @@ $route['delArticle'] = 'article/delete';
 $route['fillcategory'] = 'article/fillCategory';
 
 $route['Gestionar-Clientes'] = 'client';
-$route['Clientes'] = 'client/get_client';
+$route['Clientes'] = 'client/get_clients';
 $route['saveclients'] = 'client/create';
 $route['getCliente'] = 'client/get_client';
 $route['editClient'] = 'client/update';

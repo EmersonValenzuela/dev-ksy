@@ -13,10 +13,19 @@ $(($) => {
 				data: "nombrecliente",
 			},
 			{
-				data: "tipo_documento",
+				data: "tipo_documentoCliente",
 			},
 			{
-				data: "num_documento",
+				data: "num_documentoCliente",
+			},
+			{
+				data: "direccionCliente",
+			},
+			{
+				data: "telefonoCliente",
+			},
+			{
+				data: "emailCliente",
 			},
 			{
 				data: "idcliente",

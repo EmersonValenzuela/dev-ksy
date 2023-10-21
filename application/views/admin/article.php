@@ -146,12 +146,16 @@
                                                           <div class="tab-content" id="add-product-pills-tabContent">
                                                               <div class="tab-pane fade show active" id="detail-product" role="tabpanel" aria-labelledby="detail-product-tab">
                                                                   <div class="sidebar-body">
-                                                                      <form class="row g-2">
-                                                                          <label class="form-label col-12 m-0" for="productTitle1" >Titulo del producto<span class="txt-danger"> *</span></label>
-                                                                          <div class="col-12 custom-input">
-                                                                              <input class="form-control" id="productTitle1" name=" pdttitulo"type="text" required="">
+                                                                      <form class="row g-2">    
+                                                                          <div class="col-6 custom-input">
+                                                                              <label class="form-label col-12 m-0" for="productTitle1">Titulo del producto<span class="txt-danger"> *</span></label>
+                                                                              <input class="form-control" id="productTitle1" name=" pdttitulo" type="text" required="">
                                                                               <div class="valid-feedback">Looks good!</div>
                                                                               <div class="invalid-feedback">Se requiere y se recomienda que un nombre de producto sea único.</div>
+                                                                          </div>
+                                                                          <div class="col-4 custom-input">
+                                                                              <label class="form-label col-12 m-0" for="productCode">Codigo del producto<span class="txt-danger"> *</span></label>
+                                                                              <input class="form-control" id="productCode" name=" pdtcode" type="text" required="">
                                                                           </div>
                                                                           <div class="col-12">
                                                                               <div class="toolbar-box">
@@ -228,7 +232,7 @@
                                                                                                   <labe l class="form-label d-block m-0">Agregar Etiquetas</label>
                                                                                               </div>
                                                                                               <div class="col-12">
-                                                                                                  <input name="basic-tags" name ="prdTags"value="emerson,diego">
+                                                                                                  <input name="basic-tags" name="prdTags" value="emerson,diego">
                                                                                                   <p class="f-light">Los productos se pueden etiquetar.</p>
                                                                                               </div>
                                                                                           </div>
@@ -362,40 +366,40 @@
                                           <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
                                           <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Categoria</button>
                                           <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
-                                      
-                                        </div>
-                                          <div class="col-md-7">
-                                              <div class="mb-3">
-                                                  <label class="form-label" for="description">Descripcion</label>
-                                                  <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
-                                              </div>
-                                          </div>
-                                          <div class="row">
-                                              <div class="col-md-6">
-                                                  <div class="mb-3">
-                                                      <label class="form-label" for="image">Imagen</label>
-                                                      <input class="form-control" id="formFile" type="file">
-                                                  </div>
-                                              </div>
-                                              <div class="col-md-4">
-                                                  <div class="mb-3">
-                                                      <label class="form-label" for="condition">Condición</label>
-                                                      <select class="form-select input-air-primary" id="condition" name="condition">
-                                                          <option value="" selected disabled>Selecciona Condición</option>
-                                                          <option value="1">Activo</option>
-                                                          <option value="0">Inactivo</option>
-                                                      </select>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="row">
-                                          </div>
-                                          <div class="card-footer text-end">
-                                              <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
-                                              <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Articulo</button>
-                                              <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Articulo</button>
+
+                                      </div>
+                                      <div class="col-md-7">
+                                          <div class="mb-3">
+                                              <label class="form-label" for="description">Descripcion</label>
+                                              <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
                                           </div>
                                       </div>
+                                      <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="mb-3">
+                                                  <label class="form-label" for="image">Imagen</label>
+                                                  <input class="form-control" id="formFile" type="file">
+                                              </div>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <div class="mb-3">
+                                                  <label class="form-label" for="condition">Condición</label>
+                                                  <select class="form-select input-air-primary" id="condition" name="condition">
+                                                      <option value="" selected disabled>Selecciona Condición</option>
+                                                      <option value="1">Activo</option>
+                                                      <option value="0">Inactivo</option>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                      </div>
+                                      <div class="card-footer text-end">
+                                          <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
+                                          <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Articulo</button>
+                                          <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Articulo</button>
+                                      </div>
+                                  </div>
                               </form>
                           </div>
                       </div>
