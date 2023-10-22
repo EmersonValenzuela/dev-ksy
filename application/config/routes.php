@@ -84,8 +84,8 @@ $route['fillcategory'] = 'article/fillCategory';
 
 $route['Gestionar-Clientes'] = 'client';
 $route['Clientes'] = 'client/get_clients';
-$route['saveclients'] = 'client/create';
-$route['getCliente'] = 'client/get_client';
+$route['saveClients'] = 'client/create';
+$route['getClient'] = 'client/get_client';
 $route['editClient'] = 'client/update';
 $route['delClient'] = 'client/delete';
 

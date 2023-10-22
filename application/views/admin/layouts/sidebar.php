@@ -167,7 +167,8 @@
                                         </svg><span class="lan-3">Ventas
                                         </span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a class="lan-4" href="<?= base_url('Gestionar-Clientes') ?>">Clientes</a></li>
+                                        <li><a class="lan-4" href="Gestionar-Clientes">Clientes</a></li>
+                                        <li><a class="lan-4" href="Gestionar-Proveedores">Proveedores</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-main-title">
