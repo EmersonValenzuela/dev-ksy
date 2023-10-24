@@ -1,52 +1,47 @@
-$(($) => {
-	"use strict";
-	fill_category();
-	const title = $("#id_title");
-	const t = $("#data-articulo").DataTable({
-		language: {
-			url: "assets/json/Spanish.json",
-		},
-		ajax: {
-			url: "Articulos",
-		},
-		columns: [
-			{
-				data: "codigo_articulo",
+	$(($) => {
+		"use strict";
+		fill_category();
+		
+		const title = $("#id_title");
+		const t = $("#data-articulo").DataTable({
+			language: {
+				url: "assets/json/Spanish.json",
 			},
-			{
-				data: "nombre_articulo",
+			ajax: {
+				url: "Articulos",
 			},
-			{
-				data: "nombreCategoria",
-			},
-			{
-				data: "stock_articulo",
-			},
-			{
-				data: "condicion_articulo",
-			},
-			{
-				data: "idarticulo",
-			},
-		],
-	}); //*TABLA CATEGORIA
+			columns: [
+				{
+					data: "codigo_articulo",
+				},
+				{
+					data: "nombre_articulo",
+				},
+				{
+					data: "nombreCategoria",
+				},
+				{
+					data: "stock_articulo",
+				},
+				{
+					data: "condicion_articulo",
+				},
+				{
+					data: "idarticulo",
+				},
+			],
+		}); //*TABLA CATEGORIA
 
-	//* ABRE MODAL PARA AGREGAR
-	$("#btn_add").on("click", (e) => {
-		e.preventDefault();
-		clearform();
-		$("#btn_send").removeClass("hidden");
-		$("#btn_edit").addClass("hidden");
-		title.html("Agregar Articulo");
-		$("#mdl_add").modal("show");
-	});
-	//****************** */
-	var editor2 = new Quill("#editor2", {
-		modules: { toolbar: "#toolbar2" },
-		theme: "snow",
-		placeholder: "Enter your messages...",
-	});
-
+		//* ABRE MODAL PARA AGREGAR
+		$("#btn_add").on("click", (e) => {
+			e.preventDefault();
+			clearform();
+			addCode();
+			$("#btn_send").removeClass("hidden");
+			$("#btn_edit").addClass("hidden");
+			title.html("Agregar Articulo");
+			$("#mdl_add").modal("show");
+		});
 	$("#showCategory").on("click", (e) => {
 		e.preventDefault();
 		title.html("Agregar Articulo");
@@ -188,6 +183,22 @@ $(($) => {
 		});
 	});
 });
+
+async function generateCode() {
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    for (var i = 0; i < 11; i++) {
+        var r = Math.floor(Math.random() * characters.length);
+        result += characters.charAt(r);
+    }
+    return result;;
+}
+
+const addCode = () => {
+	generateCode().then(function (code) {
+		document.getElementById("codProduc").value = code;
+	});
+};
 
 const clearform = () => {};
 

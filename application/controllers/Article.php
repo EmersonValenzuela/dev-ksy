@@ -15,19 +15,24 @@ class Article extends CI_Controller
             '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/quill.snow.css">',
             '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/intltelinput.min.css">',
             '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/tagify.css">',
+            '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/filepond.css">',
+            '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/filepond-plugin-image-preview.css">',
             '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/flatpickr/flatpickr.min.css">',
             '<link rel="stylesheet" type="text/css" href="' . base_url() . 'assets/css/vendors/dropzone.css">'
         );
         $data['scripts'] = array(
             '<script src="' . base_url() . 'assets/js/flat-pickr/flatpickr.js"></script>',
             '<script src="' . base_url() . 'assets/js/flat-pickr/custom-flatpickr.js"></script>',
-            '<script src="' . base_url() . 'assets/js/dropzone/dropzone.js"></script>',
-            '<script src="' . base_url() . 'assets/js/dropzone/dropzone-script.js"></script>',
             '<script src="' . base_url() . 'assets/js/select2/tagify.js"></script>',
             '<script src="' . base_url() . 'assets/js/select2/tagify.polyfills.min.js"></script>',
             '<script src="' . base_url() . 'assets/js/select2/intltelinput.min.js"></script>',
             '<script src="' . base_url() . 'assets/js/editors/quill.js"></script>',
             '<script src="' . base_url() . 'assets/js/height-equal.js"></script>',
+            '<script src="' . base_url() . 'assets/js/filepond/filepond-plugin-image-preview.js"></script>',
+            '<script src="' . base_url() . 'assets/js/filepond/filepond-plugin-file-rename.js"></script>',
+            '<script src="' . base_url() . 'assets/js/filepond/filepond-plugin-image-transform.js"></script>',
+            '<script src="' . base_url() . 'assets/js/filepond/filepond.js"></script>',
+            '<script src="' . base_url() . 'assets/js/filepond/custom-filepond.js"></script>',
             '<script src="' . base_url() . 'assets/js/tooltip-init.js"></script>',
             '<script src="' . base_url() . 'modules/js/article.js"></script>'
         );

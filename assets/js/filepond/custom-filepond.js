@@ -41,7 +41,7 @@ inputElement.forEach((item) => {
             bottom: "10px",
             width: "128px",
             height: "34px",
-            src: "./filepond-logo.svg",
+            src: "./filepond-logofilepond-logo.svg",
             fit: "contain",
           },
         ],
