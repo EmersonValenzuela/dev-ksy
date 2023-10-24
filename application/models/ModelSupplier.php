@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelSupplier extends CI_Model
 {
@@ -19,16 +19,18 @@ class ModelSupplier extends CI_Model
     }
     public function insert($data, $table)
     {
-        $this->db->insert($table,$data);
-        return $this ->db->insert_id();
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
     }
-    public function update($id,$data,$table)
+    
+    public function update($id, $data, $table)
     {
         $this->db->where($id);
-        $this->db->update($table,$data);
-        return $this ->db->insert_id();
+        $this->db->update($table, $data);
+        return $this->db->insert_id();
     }
-    public function delete($data,$table)
+
+    public function delete($data ,$table)
     {
         $this->db->select('*');
         $this->db->from($table);

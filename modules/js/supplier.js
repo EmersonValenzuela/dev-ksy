@@ -1,28 +1,28 @@
 $(($) => {
 	"use strict";
 	const title = $("#id_title");
-	const t = $("#data-cliente").DataTable({
+	const t = $("#data-proveedor").DataTable({
 		language: {
 			url: "assets/json/Spanish.json",
 		},
 		ajax: {
-			url: "Clientes",
+			url: "Proveedores",
 		},
 		columns: [
 			{
-				data: "nombreCliente",
+				data: "nombreProveedor",
 			},
 			{
-				data: "tipo_documentoCliente",
+				data: "tipo_documentoProveedor",
 			},
 			{
-				data: "num_documentoCliente",
+				data: "num_documentoProveedor",
 			},
 			{
-				data: "emailCliente",
+				data: "emailProveedor",
 			},
 			{
-				data: "idcliente",
+				data: "idproveedor",
 				render: function (data, type, row) {
 					return btnActions(data);
 				},
@@ -30,35 +30,19 @@ $(($) => {
 		],
 	});
 
-	//agregar cliente
+	//agregar Proveedor
 	$("#btn_add").on("click", (e) => {
 		e.preventDefault();
 		clearform();
 		$("#btn_send").removeClass("hidden");
 		$("#btn_edit").addClass("hidden");
-		title.html("Agregar Cliente");
+		title.html("Agregar Proveedor");
 		$("#mdl_add").modal("show");
 	});
-	$("#btn_edit").on("click", (e) => {
-		e.preventDefault();
-		$.ajax({
-			url: "editClient",
-			type: "post",
-			data: $("#frm_client").serialize(),
-			dataType: "json",
-			beforeSend: () => {},
-		}).done((data) => {
-			if ((data.rsp = 200)) {
-				alert_type("Usuario editado correctamente", "Vista Usuario", "success");
-				t.ajax.reload();
-			} else {
-				alert_type("Error", "Vista Usuario", "error");
-			}
-		});
-	});
 
-	$("#frm_client input").keyup(function () {
-		var form = $("#frm_client").find(':input[type="text"]');
+
+	$("#frm_supplier input").keyup(function () {
+		var form = $("#frm_supplier").find(':input[type="text"]');
 		var check = checkCampos(form);
 		console.log(check);
 		if (check) {
@@ -74,41 +58,45 @@ $(($) => {
 		let f = $(this);
 
 		$.ajax({
-			url: "saveClients",
+			url: "saveSupplier",
 			type: "post",
-			data: $("#frm_client").serialize(),
+			data: $("#frm_supplier").serialize(),
 			dataType: "json",
 			beforeSend: () => {
 				btn.innerHTML =
-					"<i class='fa fa-spin fa-spinner'></i> Guardando Cliente";
+					"<i class='fa fa-spin fa-spinner'></i> Guardando Proveedor";
 				btn.disabled = true;
 				btn.form.firstElementChild.disabled = true;
 			},
 		})
 			.done((v) => {
 				console.log(v.data);
-				alert_type("Cliente añadido correctamente", "Vista Cliente", "success");
+				alert_type(
+					"Proveedor añadido correctamente",
+					"Vista Proveedor",
+					"success"
+				);
 
 				const rowNode = t.row
 					.add({
-						nombreCliente: v.data.nombreCliente,
-						tipo_documentoCliente: v.data.tipo_documentoCliente,
-						num_documentoCliente: v.data.num_documentoCliente,
-						direccionCliente: v.data.direccionCliente,
-						emailCliente: v.data.emailCliente,
-						idcliente: v.id,
+						nombreProveedor: v.data.nombreProveedor,
+						tipo_documentoProveedor: v.data.tipo_documentoProveedor,
+						num_documentoProveedor: v.data.num_documentoProveedor,
+						direccionProveedor: v.data.direccionProveedor,
+						emailProveedor: v.data.emailProveedor,
+						idproveedor: v.id,
 					})
 					.draw()
 					.node();
 				$(rowNode).css("color", "green").animate({ color: "black" });
 				$("#mdl_add").modal("hide");
-				$("#frm_client")[0].reset();
+				$("#frm_supplier")[0].reset();
 			})
 			.fail((e) => {
 				console.log(e.responseText);
 			})
 			.always(() => {
-				btn.innerHTML = '<i class="fa fa-save"></i> Guardar Cliente';
+				btn.innerHTML = '<i class="fa fa-save"></i> Guardar Proveedor';
 				btn.disabled = false;
 				btn.form.firstElementChild.disabled = false;
 			});
@@ -127,32 +115,54 @@ $(($) => {
 	//ACTION MODAL SHOW EDIT
 	t.on("click", ".editar_btn", function (e) {
 		let data = t.row(e.target.closest("tr")).data();
-		title.html("Editar Cliente"); // funcion editar
+		title.html("Editar Proveedor"); // funcion editar
 		$("#btn_send").addClass("hidden");
 		$("#btn_edit").removeClass("hidden");
 		$.ajax({
-			url: "getClient",
+			url: "getSupplier",
 			type: "post",
-			data: { i: data.idcliente },
+			data: { i: data.idproveedor },
 			dataType: "json",
 			beforeSend: () => {},
 		})
 			.done((data) => {
 				const array = data.result;
 				array.forEach((item) => {
-					$("#names_cli").val(item.nombreCliente);
-					$("#type_docc").val(item.tipo_documentoCliente).change();
-					$("#number_docc").val(item.num_documentoCliente);
-					$("#addressc").val(item.direccionCliente);
-					$("#phonec").val(item.telefonoCliente);
-					$("#emailc").val(item.emailCliente);
-					$("#id_client").val(item.idcliente);
+					$("#names_s").val(item.nombreProveedor);
+					$("#type_docs").val(item.tipo_documentoProveedor).change();
+					$("#number_docs").val(item.num_documentoProveedor);
+					$("#addresss").val(item.direccionProveedor);
+					$("#phones").val(item.telefonoProveedor);
+					$("#emails").val(item.emailProveedor);
+					$("#id_supplier").val(item.idproveedor);
 					$("#mdl_add").modal("show");
 				});
 			})
 			.fail((e) => {
 				console.error(e.responseText);
 			});
+	});
+
+	$("#btn_edit").on("click", (e) => {
+		e.preventDefault();
+		$.ajax({
+			url: "editSupplier",
+			type: "post",
+			data: $("#frm_supplier").serialize(),
+			dataType: "json",
+			beforeSend: () => {},
+		}).done((data) => {
+			if ((data.rsp = 200)) {
+				alert_type(
+					"Proveedor editado correctamente",
+					"Vista Proveedor",
+					"success"
+				);
+				t.ajax.reload();
+			} else {
+				alert_type("Error", "Vista Usuario", "error");
+			}
+		});
 	});
 	t.on("click", ".btn_delete", function (e) {
 		let data = t.row(e.target.closest("tr")).data();
@@ -168,9 +178,9 @@ $(($) => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				$.ajax({
-					url: "delClient",
+					url: "delSupplier",
 					type: "post",
-					data: { id: data.idcliente },
+					data: { id: data.idproveedor },
 					dataType: "json",
 					beforeSend: () => {},
 				})
@@ -189,7 +199,7 @@ $(($) => {
 });
 
 const clearform = () => {
-	$("#frm_client")[0].reset();
+	$("#frm_supplier")[0].reset();
 };
 
 const btnActions = (i) => {

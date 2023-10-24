@@ -22,17 +22,17 @@ class Client extends CI_Controller
         $names_cli = $this->input->post('names_cli');
         $type_docc = $this->input->post('type_docc');
         $number_docc = $this->input->post('number_docc');
-        $address = $this->input->post('address');
-        $phone = $this->input->post('phone');
-        $email = $this->input->post('email');
+        $address = $this->input->post('addressc');
+        $phone = $this->input->post('phonec');
+        $email = $this->input->post('emailc');
 
         $data = array(
-            "nombre" => $names_cli,
-            "tipo_documento" => $type_docc,
-            "num_documento" => $number_docc,
-            "direccion" => $address,
-            "telefono" => $phone,
-            "email" => $email,
+            "nombreCliente" => $names_cli,
+            "tipo_documentoCliente" => $type_docc,
+            "num_documentoCliente" => $number_docc,
+            "direccionCliente" => $address,
+            "telefonoCliente" => $phone,
+            "emailCliente" => $email,
         );
 
         $result = $this->ModelClient->insert($data, 'cliente');
@@ -48,22 +48,22 @@ class Client extends CI_Controller
         header('Content-type: application/json; charset=utf-8');
         echo json_encode($jsonData);
     }
-    public function update_client()
+    public function update()
     {
         $id = $this->input->post('id_client');
         $names_cli = $this->input->post('names_cli');
         $type_docc = $this->input->post('type_docc');
         $number_docc = $this->input->post('number_docc');
-        $address = $this->input->post('address');
-        $phone = $this->input->post('phone');
-        $email = $this->input->post('email');
+        $addressc = $this->input->post('addressc');
+        $phonec = $this->input->post('phonec');
+        $emailc = $this->input->post('emailc');
         $data = array(
-            "nombre" => $names_cli,
-            "tipo_documento" => $type_docc,
-            "num_documento" => $number_docc,
-            "direccion" => $address,
-            "telefono" => $phone,
-            "email" => $email,
+            "nombreCliente" => $names_cli,
+            "tipo_documentoCliente" => $type_docc,
+            "num_documentoCliente" => $number_docc,
+            "direccionCliente" => $addressc,
+            "telefonoCliente" => $phonec,
+            "emailCliente" => $emailc,
         );
         $result = $this->ModelClient->update(array('idcliente' => $id), $data, 'cliente');
         if ($result) {
@@ -75,7 +75,7 @@ class Client extends CI_Controller
         echo json_encode($jsonData);
     }
 
-    public function delete_client()
+    public function delete()
     {
         $id = $this->input->post('id');
         $result = $this->ModelClient->delete(array('idcliente' => $id), 'cliente');

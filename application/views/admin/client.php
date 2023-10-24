@@ -46,6 +46,7 @@
                                         <th>Nombre</th>
                                         <th>Documento</th>
                                         <th>N°Dni</th>
+                                        <th>email</th>
                                         <th>Acciones</th>
                                 </thead>
                                 <tfoot class="text-center">
@@ -53,6 +54,7 @@
                                         <th>Nombre</th>
                                         <th>Documento</th>
                                         <th>N°Dni</th>
+                                        <th>email</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </tfoot>
@@ -80,32 +82,33 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="names_c">Apellidos y Nombres</label>
+                                    <label class="form-label" for="names_cli">Apellidos y Nombres</label>
                                     <input class="form-control input-air-primary" id="names_cli" name="names_cli" type="text" placeholder="Ejem. Nombre de Cliente" autofocus>
                                     <input class="form-control input-air-primary" id="id_client" name="id_client" type="hidden" placeholder="Ejem. Nombre de Cliente" autofocus>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="type_doc">Tipo de Documento</label>
-                                    <select class="form-select input-air-primary" id="type_doc" name="type_doc">
+                                    <label class="form-label" for="type_docc">Tipo de Documento</label>
+                                    <select class="form-select input-air-primary" id="type_docc" name="type_docc">
                                         <option value="0" selected disabled>Selecciona el Tipo de Documento</option>
                                         <option value="DNI">DNI</option>
                                         <option value="Carnet de Extranjeria">Carnet de Extranjeria</option>
+                                        <option value="RUC">RUC</option></option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="number_doc">Numero de Documento</label>
-                                        <input class="form-control input-air-primary input_numb" id="number_doc" type="text" placeholder="Ejem. 3" name="number_doc">
+                                        <label class="form-label" for="number_docc">Numero de Documento</label>
+                                        <input class="form-control input-air-primary input_numb" id="number_docc" type="text" placeholder="Ejem. 3" name="number_docc">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="mb-3">
-                                        <label class="form-label" for="address">Dirección</label>
-                                        <input class="form-control input-air-primary" id="address" type="text" placeholder="Ejem. 3" name="address">
+                                        <label class="form-label" for="addressc">Dirección</label>
+                                        <input class="form-control input-air-primary" id="addressc" type="text" placeholder="Ejem. 3" name="addressc">
                                     </div>
                                 </div>
                                 <input type="hidden" id="process">
@@ -113,14 +116,14 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="phone">Telefono o Celular</label>
-                                        <input class="form-control input-air-primary input_numb" id="phone" type="text" placeholder="Ejem. 3" name="phone">
+                                        <label class="form-label" for="phonec">Telefono o Celular</label>
+                                        <input class="form-control input-air-primary input_numb" id="phonec" type="text" placeholder="Ejem. 3" name="phonec">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label class="form-label" for="email">Correo Electronico</label>
-                                        <input class="form-control input-air-primary" id="email" type="text" placeholder="Ejem. 3" name="email">
+                                        <label class="form-label" for="emailc">Correo Electronico</label>
+                                        <input class="form-control input-air-primary" id="emailc" type="text" placeholder="Ejem. 3" name="emailc">
                                     </div>
                                 </div>
                             </div>
