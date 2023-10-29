@@ -143,30 +143,28 @@
                                                           </ul>
                                                       </div>
                                                       <div class="col-xxl-9 col-xl-8 box-col-8 position-relative">
+                                                        <form id="form-new-article" enctype="multipart/form-data">
                                                           <div class="tab-content" id="add-product-pills-tabContent">
                                                               <div class="tab-pane fade show active" id="detail-product" role="tabpanel" aria-labelledby="detail-product-tab">
                                                                   <div class="sidebar-body">
-                                                                      <form>
-                                                                          <div class="row g-2">
-                                                                              <div class="col-6">
-                                                                                  <label class="form-label col-12 m-0" for="productCode">Codigo del producto<span class="txt-danger"> *</span></label>
-                                                                                  <div class="input-group">
-                                                                                      <input class="form-control" type="text" name="codProduc" id="codProduc">
-                                                                                      <button class="btn btn-info" type="button" onclick="addCode()"><i class="fa fa-repeat"></i></button>
-                                                                                  </div>
-                                                                              </div>
-                                                                              <div class="col-6 custom-input">
-                                                                                  <label class="form-label col-12 m-0" for="productTitle1">Titulo del producto<span class="txt-danger"> *</span></label>
-                                                                                  <input class="form-control" id="productTitle1" name=" pdttitulo" type="text" required="">
-                                                                                  <div class="valid-feedback">Looks good!</div>
-                                                                                  <div class="invalid-feedback">Se requiere y se recomienda que un nombre de producto sea único.</div>
-                                                                              </div>
-
-                                                                              <div class="col-12">
-                                                                                  <textarea placeholder="Escribe descripción" class="form-control" rows="10"></textarea>
+                                                                      <div class="row g-2">
+                                                                          <div class="col-6">
+                                                                              <label class="form-label col-12 m-0" for="productCode">Codigo del producto<span class="txt-danger"> *</span></label>
+                                                                              <div class="input-group">
+                                                                                  <input class="form-control" type="text" name="prdCod" id="codProduc">
+                                                                                  <button class="btn btn-info" type="button" onclick="addCode()"><i class="fa fa-repeat"></i></button>
                                                                               </div>
                                                                           </div>
-                                                                      </form>
+                                                                          <div class="col-6 custom-input">
+                                                                              <label class="form-label col-12 m-0" for="productTitle1">Titulo del producto<span class="txt-danger"> *</span></label>
+                                                                              <input class="form-control" id="productTitle1" name="prdtitulo" type="text" required="">
+                                                                              <div class="valid-feedback">Looks good!</div>
+                                                                              <div class="invalid-feedback">Se requiere y se recomienda que un nombre de producto sea único.</div>
+                                                                          </div>
+                                                                          <div class="col-12">
+                                                                              <textarea placeholder="Escribe descripción" class="form-control" rows="10" name="prdDescription"></textarea>
+                                                                          </div>
+                                                                      </div>
                                                                   </div>
                                                               </div>
                                                               <div class="tab-pane fade" id="gallery-product" role="tabpanel" aria-labelledby="gallery-product-tab">
@@ -174,7 +172,7 @@
                                                                       <div class="product-upload">
                                                                           <p>Imagen del producto</p>
                                                                           <div class="card-body">
-                                                                              <input class="show-preview" type="file" id="single-img">
+                                                                              <input class="" type="file" id="prdImage" name="prdImage">
                                                                           </div>
                                                                       </div>
                                                                   </div>
@@ -200,10 +198,10 @@
                                                                                   <div class="col-sm-6">
                                                                                       <div class="row g-2 product-tag">
                                                                                           <div class="col-12">
-                                                                                              <labe l class="form-label d-block m-0">Agregar Etiquetas</label>
+                                                                                              <label class="form-label d-block m-0">Agregar Etiquetas</label>
                                                                                           </div>
                                                                                           <div class="col-12">
-                                                                                              <input name="basic-tags" name="prdTags" value="emerson,diego" id="basic-tags">
+                                                                                              <input name="basic-tags" id="basic-tags">
                                                                                               <p class="f-light">Los productos se pueden etiquetar.</p>
                                                                                           </div>
                                                                                       </div>
@@ -224,9 +222,8 @@
                                                                                           <div class="col-12">
                                                                                               <label class="form-label" for="publishStatus">Estado de publicación</label>
                                                                                               <select class="form-select" id="publishStatus" required="" name="prdStatus">
-                                                                                                  <option selected="" value="">Publish</option>
-                                                                                                  <option>Borradores</option>
-                                                                                                  <option>Despublicar</option>
+                                                                                                  <option selected="" value="1">Activo</option>
+                                                                                                  <option  value="2">Inactivo</option>
                                                                                               </select>
                                                                                               <p class="f-light">Elige el estado</p>
                                                                                           </div>
@@ -242,11 +239,11 @@
                                                                       <div class="row g-3 custom-input">
                                                                           <div class="col-sm-6">
                                                                               <label class="form-label" for="initialCost">Costo inicial<span class="txt-danger">*</span></label>
-                                                                              <input class="form-control" id="initialCost" type="number" name="prdInitialCost">
+                                                                              <input class="form-control input_numb" id="initialCost" type="number" name="prdInitialCost">
                                                                           </div>
                                                                           <div class="col-sm-6">
                                                                               <label class="form-label" for="sellingPrice">Precio de venta <span class="txt-danger">*</span></label>
-                                                                              <input class="form-control" id="sellingPrice" type="number" name="prdSelling">
+                                                                              <input class="form-control input_numb" id="sellingPrice" type="number" name="prdSelling">
                                                                           </div>
                                                                           <div class="col-sm-6">
                                                                               <label class="form-label">Elige tu moneda</label>
@@ -262,12 +259,13 @@
                                                                           </div>
                                                                           <div class="col-sm-6">
                                                                               <label class="form-label" for="productStock1">Existencias de productos<span class="txt-danger">*</span></label>
-                                                                              <input class="form-control" id="productStock1" type="number" name="prdStock">
+                                                                              <input class="form-control input_numb" id="productStock1" type="number" name="prdStock">
                                                                           </div>
                                                                       </div>
                                                                       <div class="product-buttons">
                                                                           <div class="btn bg-success">
-                                                                              <div class="d-flex align-items-center gap-sm-2 gap-1">Guardar
+                                                                              <div class="d-flex align-items-center gap-sm-2 gap-1" id="btn-new-article">
+                                                                                  <i class="icon-save"></i> Guardar
                                                                                   <svg>
                                                                                       <use href="<?= base_url(); ?>assets/svg/icon-sprite.svg#front-arrow"></use>
                                                                                   </svg>
@@ -277,6 +275,7 @@
                                                                   </div>
                                                               </div>
                                                           </div>
+                                                          </form>
                                                       </div>
                                                   </div>
                                               </div>
@@ -295,7 +294,7 @@
                   <div class="modal-dialog modal-lg modal-dialog-centered">
                       <div class="modal-content">
                           <div class="modal-header">
-                              <h4 class="modal-title" id="id_title"></h4>
+                              <h4 class="modal-title">Agregar Categoria</h4>
                               <button class="btn-close theme-close bg-primary" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -306,7 +305,7 @@
                                               <div class="mb-3">
                                                   <label class="form-label" for="names_c">Nombres</label>
                                                   <input class="form-control input-air-primary" id="names_c" name="names_c" type="text" placeholder="Ejem. Nombre de Categoria" autofocus>
-                                                  <input class="form-control input-air-primary" id="id_category" name="id_category" type="hidden" placeholder="Ejem. Nombre de Categoria" autofocus>
+                                                  Z
                                               </div>
                                           </div>
                                           <div class="col-md-6">
@@ -316,14 +315,12 @@
                                               </div>
                                           </div>
                                       </div>
-                                      <div class="row">
+                                      <div class="row hidden">
                                           <div class="col-md-4">
                                               <div class="mb-3">
                                                   <label class="form-label" for="condition">Condición</label>
                                                   <select class="form-select input-air-primary" id="condition" name="condition">
-                                                      <option value="" selected disabled>Selecciona Condición</option>
-                                                      <option value="1">Activo</option>
-                                                      <option value="0">Inactivo</option>
+                                                      <option value="1" selected>Activo</option>
                                                   </select>
                                               </div>
                                           </div>
@@ -332,42 +329,8 @@
                                       </div>
                                       <div class="card-footer text-end">
                                           <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
-                                          <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Categoria</button>
-                                          <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Categoria</button>
-
+                                          <button class="btn btn-info disabled" type="submit" id="btn_sendCategory"><i class="fa fa-save"></i> Guardar Categoria</button>
                                       </div>
-                                      <div class="col-md-7">
-                                          <div class="mb-3">
-                                              <label class="form-label" for="description">Descripcion</label>
-                                              <input class="form-control input-air-primary" id="description" type="text" placeholder="Ejem. tres" name="description">
-                                          </div>
-                                      </div>
-                                      <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="mb-3">
-                                                  <label class="form-label" for="image">Imagen</label>
-                                                  <input class="form-control" id="formFile" type="file">
-                                              </div>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <div class="mb-3">
-                                                  <label class="form-label" for="condition">Condición</label>
-                                                  <select class="form-select input-air-primary" id="condition" name="condition">
-                                                      <option value="" selected disabled>Selecciona Condición</option>
-                                                      <option value="1">Activo</option>
-                                                      <option value="0">Inactivo</option>
-                                                  </select>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div class="row">
-                                      </div>
-                                      <div class="card-footer text-end">
-                                          <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
-                                          <button class="btn btn-info disabled" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Articulo</button>
-                                          <button class="btn btn-info hidden" type="submit" id="btn_edit"><i class="fa fa-edit"></i> Editar Articulo</button>
-                                      </div>
-                                  </div>
                               </form>
                           </div>
                       </div>

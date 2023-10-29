@@ -39,6 +39,49 @@ class Article extends CI_Controller
         $data['title'] = 'Articulos';
         $this->template->load('admin/template', 'admin/article', $data);
     }
+    public function create()
+    {
+        if (!empty($_FILES['archivo']['name'])) {
+            $config['upload_path'] = 'modules/uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg|PNG|JPG|JPEG';
+
+            $image_name = date('dmYhis') . '_' . rand(0, 99999) . "." . pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION);
+
+            $config['file_name'] = $image_name;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('archivo')) {
+                $error = array('error' => $this->upload->display_errors());
+                echo json_encode($error);
+            }
+        } else {
+            $image_name = "";
+        }
+
+        $cod = $this->input->post('prdCod');
+        $tags = $this->input->post('tags');
+
+        $data = array(
+            'categoria' => $this->input->post('prdCategoria'),
+            'codigo_articulo' => $cod,
+            'nombre_articulo' => $this->input->post('prdtitulo'),
+            'stock_articulo' => $this->input->post('prdStock'),
+            'precio_venta' => $this->input->post('prdInitialCost'),
+            'precio_compra' => $this->input->post('prdSelling'),
+            'tipoCambio' => $this->input->post('prdChoose'),
+            'descripcion_articulo' => $this->input->post('prdDescription'),
+            'imagen_articulo' => $image_name,
+            'etiquetaArticulo' => $tags,
+            'condicion_articulo' => $this->input->post('prdStatus')
+        );
+
+        $result = $this->ModelArticle->insert($data,"articulo");
+        $jsonData['id'] = $result;
+        $jsonData['data'] = $data;
+        echo json_encode($jsonData);
+    }
     //API DATA para sacar informacion
     public function get_articles()
     {

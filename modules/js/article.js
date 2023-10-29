@@ -1,73 +1,111 @@
-	$(($) => {
-		"use strict";
-		fill_category();
-		
-		const title = $("#id_title");
-		const t = $("#data-articulo").DataTable({
-			language: {
-				url: "assets/json/Spanish.json",
+$(($) => {
+	"use strict";
+	fill_category();
+	var input = document.querySelector("input[name=basic-tags]");
+	new Tagify(input);
+	const title = $("#id_title");
+	const t = $("#data-articulo").DataTable({
+		language: {
+			url: "assets/json/Spanish.json",
+		},
+		ajax: {
+			url: "Articulos",
+		},
+		columns: [
+			{
+				data: "codigo_articulo",
 			},
-			ajax: {
-				url: "Articulos",
+			{
+				data: "nombre_articulo",
 			},
-			columns: [
-				{
-					data: "codigo_articulo",
-				},
-				{
-					data: "nombre_articulo",
-				},
-				{
-					data: "nombreCategoria",
-				},
-				{
-					data: "stock_articulo",
-				},
-				{
-					data: "condicion_articulo",
-				},
-				{
-					data: "idarticulo",
-				},
-			],
-		}); //*TABLA CATEGORIA
+			{
+				data: "nombreCategoria",
+			},
+			{
+				data: "stock_articulo",
+			},
+			{
+				data: "condicion_articulo",
+			},
+			{
+				data: "idarticulo",
+			},
+		],
+	}); //*TABLA ARTICULO
 
-		//* ABRE MODAL PARA AGREGAR
-		$("#btn_add").on("click", (e) => {
-			e.preventDefault();
-			clearform();
-			addCode();
-			$("#btn_send").removeClass("hidden");
-			$("#btn_edit").addClass("hidden");
-			title.html("Agregar Articulo");
-			$("#mdl_add").modal("show");
-		});
+	//* ABRE MODAL PARA AGREGAR
+	$("#btn_add").on("click", (e) => {
+		e.preventDefault();
+		clearform();
+
+		addCode();
+		$("#btn_send").removeClass("hidden");
+		$("#btn_edit").addClass("hidden");
+		title.html("Agregar Articulo");
+		$("#mdl_add").modal("show");
+	});
+
 	$("#showCategory").on("click", (e) => {
 		e.preventDefault();
 		title.html("Agregar Articulo");
 		$("#mdl_addCategory").modal("show");
 	});
 
-	$("#frm_article input").keyup(function () {
-		var form = $("#frm_article").find(':input[type="text"]');
+	$("#btn-new-article").on("click", (e) => {
+		const submitButton = $(e.target);
+		const tags = document.getElementById("basic-tags").value;
+		const dataTags = JSON.parse(tags);
+		const valuesArray = dataTags.map((obj) => obj.value);
+		const resultTags = valuesArray.join(",");
+
+		const inputFile = document.getElementById("prdImage");
+
+		const formData = new FormData(document.getElementById("form-new-article"));
+		formData.append("tags", resultTags);
+		formData.append("archivo", inputFile.files[0]);
+		fetch("saveArticles", {
+			method: "POST",
+			body: formData,
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("Respuesta del servidor:", data);
+
+				// Reactiva el botón y restaura su texto original
+				submitButton.disabled = false;
+				submitButton.textContent = "Enviar";
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+
+				// En caso de error, asegúrate de reactivar el botón y restaurar su texto
+				submitButton.disabled = false;
+				submitButton.textContent = "Enviar";
+			});
+	});
+
+	//** CIERRA MODAL AGREGAR CATEGORIA */
+
+	//*AGREGA CATEGORIA ********************************
+	$("#frm_category input").keyup(function () {
+		var form = $("#frm_category").find(':input[type="text"]');
 		var check = checkCampos(form);
 		console.log(check);
 		if (check) {
-			$("#btn_send").removeClass("disabled");
+			$("#btn_sendCategory").removeClass("disabled");
 		} else {
-			$("#btn_send").addClass("disabled");
+			$("#btn_sendCategory").addClass("disabled");
 		}
 	});
 
-	//*AGREGA ARTICULO ********************************
-	$("#btn_send").on("click", (e) => {
+	$("#btn_sendCategory").on("click", (e) => {
 		e.preventDefault();
-		let btn = document.querySelector("#btn_send");
+		let btn = document.querySelector("#btn_sendCategory");
 		let f = $(this);
 		$.ajax({
 			url: "saveCategory",
 			type: "post",
-			data: $("#frm_article").serialize(),
+			data: $("#frm_category").serialize(),
 			dataType: "json",
 			beforeSend: () => {
 				btn.innerHTML =
@@ -77,27 +115,22 @@
 			},
 		})
 			.done((v) => {
-				console.log(v.data);
+				fill_category(v.id);
 				alert_type(
-					"Articulo, añadido correctamente",
+					"Categoria, añadido correctamente",
 					"Vista Categoria",
 					"success"
 				);
 
-				const rowNode = t.row
-					.add({
-						nombreCategoria: v.data.nombreCategoria,
-						descripcionCategoria: v.data.descripcionCategoria,
-						condicionCategoria: v.data.condicionCategoria,
-						idcategoria: v.id,
-					})
-					.draw()
-					.node();
-				$(rowNode).css("color", "green").animate({ color: "black" });
-				$("#mdl_add").modal("hide");
+				$("#mdl_addCategory").modal("hide");
 			})
 			.fail((e) => {
 				console.log(e.responseText);
+			})
+			.always(() => {
+				btn.innerHTML = "<i class='fa fa-save'></i> Guardar Categoria";
+				btn.disabled = false;
+				btn.form.firstElementChild.disabled = false;
 			});
 	});
 
@@ -185,13 +218,13 @@
 });
 
 async function generateCode() {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    for (var i = 0; i < 11; i++) {
-        var r = Math.floor(Math.random() * characters.length);
-        result += characters.charAt(r);
-    }
-    return result;;
+	let result = "";
+	let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	for (var i = 0; i < 11; i++) {
+		var r = Math.floor(Math.random() * characters.length);
+		result += characters.charAt(r);
+	}
+	return result;
 }
 
 const addCode = () => {
@@ -226,9 +259,8 @@ const checkCampos = (obj) => {
 		return true;
 	}
 };
-const fill_category = () => {
-	var input = document.querySelector("input[name=basic-tags]");
-	new Tagify(input);
+const fill_category = (id = null) => {
+	$("#prdCategoria").empty();
 	fetch("fillcategory")
 		.then((response) => response.json())
 		.then((data) => {
@@ -237,6 +269,9 @@ const fill_category = () => {
 				const op = document.createElement("option");
 				op.value = option.idcategoria;
 				op.text = option.nombreCategoria;
+				if (id != null && id == option.idcategoria) {
+					op.selected = true;
+				}
 				document.getElementById("prdCategoria").appendChild(op);
 			});
 		});
