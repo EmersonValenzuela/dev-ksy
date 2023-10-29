@@ -87,11 +87,11 @@
                                     <input class="form-control input-air-primary" id="id_client" name="id_client" type="hidden" placeholder="Ejem. Nombre de Cliente" autofocus>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label class="form-label" for="type_docc">Tipo de Documento</label>
                                     <select class="form-select input-air-primary" id="type_docc" name="type_docc">
-                                        <option value="0" selected disabled>Selecciona el Tipo de Documento</option>
+                                        <option value="0" selected disabled>Seleccione</option>
                                         <option value="DNI">DNI</option>
                                         <option value="Carnet de Extranjeria">Carnet de Extranjeria</option>
                                         <option value="RUC">RUC</option></option>
@@ -120,7 +120,7 @@
                                         <input class="form-control input-air-primary input_numb" id="phonec" type="text" placeholder="Ejem. 3" name="phonec">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-8">
                                     <div class="mb-3">
                                         <label class="form-label" for="emailc">Correo Electronico</label>
                                         <input class="form-control input-air-primary" id="emailc" type="text" placeholder="Ejem. 3" name="emailc">
