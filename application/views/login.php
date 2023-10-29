@@ -8,8 +8,9 @@
     <meta name="description" content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="<?= base_url() ?>assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.png" type="image/x-icon">
+
+    <link rel="icon" href="<?php echo base_url(FAVICON_PATH); ?>" type="image/png" class="icon">
+    <link rel="shortcut icon" href="<?php echo base_url(FAVICON_PATH); ?>" type="image/png" class="icon">
     <title><?= $title ?> | Sistema Ventas KSY</title>
     <!-- Google font-->
     <link href="css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
@@ -34,6 +35,8 @@
     <link id="color" rel="stylesheet" href="<?= base_url() ?>assets/css/color-1.css" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/responsive.css">
+    <!-- logo css-->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/style2.css">
 
 </head>
 
@@ -46,9 +49,8 @@
                 <div class="login-card login-dark">
                     <div>
                         <div class="login-main">
-                            <div><a class="logo text-start" href="index.html"><img class="img-fluid for-light" src="<?= base_url() ?>assets/images/logo/logo.png" alt="looginpage"><img class="img-fluid for-dark" src="<?= base_url() ?>assets/images/logo/logo_dark.png" alt="looginpage"></a></div>
+                            <div><a class="logo text-start" href="index.html"><img src="<?php echo base_url(LOGO_PATH); ?> "alt="Logo de la empresa" class="login"></a></div>
                             <form class="theme-form" id="frm_login">
-                                <h4>SISTEMA DE VENTAS</h4>
                                 <p>Por favor utilizar sus credenciales para iniciar sesión.</p>
                                 <div class="form-group">
                                     <label class="col-form-label">Usuario</label>

@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
+defined('LOGO_PATH') || define('LOGO_PATH', 'assets/images/logo/logo2.png');
+defined('FAVICON_PATH') || define('FAVICON_PATH', 'assets/images/logo/icon.jpg');
+defined('LOGO_PATH2') || define('LOGO_PATH2', 'assets/images/logo/icon.jpg');
 
 /*
 |--------------------------------------------------------------------------

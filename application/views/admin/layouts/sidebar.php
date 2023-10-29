@@ -1,4 +1,5 @@
 <body>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/style2.css">
     <!-- loader starts-->
     <div class="loader-wrapper">
         <div class="loader-index"> <span></span></div>
@@ -22,7 +23,7 @@
         <div class="page-header">
             <div class="header-wrapper row m-0">
                 <div class="header-logo-wrapper col-auto p-0">
-                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img class="img-fluid" src="<?= base_url() ?>assets/images/logo/logo.png" alt></a></div>
+                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a></div>
                     <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
                 </div>
 
@@ -89,17 +90,17 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
                 <div>
-                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img class="img-fluid for-light" src="<?= base_url() ?>assets/images/logo/logo.png" alt><img class="img-fluid for-dark" src="<?= base_url() ?>assets/images/logo/logo_dark.png" alt></a>
+                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH); ?> "alt="Logo de la empresa" class="dashboard"></a>
                         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
                             </i></div>
                     </div>
-                    <div class="logo-icon-wrapper"><a href="<?= base_url() ?>"><img class="img-fluid" src="<?= base_url() ?>assets/images/logo/logo-icon.png" alt></a></div>
+                    <div class="logo-icon-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                         <div id="sidebar-menu">
                             <ul class="sidebar-links" id="simple-bar">
-                                <li class="back-btn"><a href="<?= base_url() ?>"><img class="img-fluid" src="<?= base_url() ?>assets/images/logo/logo-icon.png" alt></a>
+                                <li class="back-btn"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a>
                                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                 </li>
                                 <li class="pin-title sidebar-main-title">
