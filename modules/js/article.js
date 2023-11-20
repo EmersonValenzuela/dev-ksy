@@ -26,9 +26,15 @@ $(($) => {
 			},
 			{
 				data: "condicion_articulo",
+				render: function(data,type,row) {
+					return condition(data);
+				}
 			},
 			{
 				data: "idarticulo",
+				render: function(data, type, row) {
+					return btnActions(data,);
+				},
 			},
 		],
 	}); //*TABLA ARTICULO
@@ -233,7 +239,9 @@ const addCode = () => {
 	});
 };
 
-const clearform = () => {};
+const clearform = () => {
+
+};
 
 const btnActions = (i) => {
 	return `<button type="button" class="editar_btn btn btn-pill btn-warning btn-air-warning"><i class="fa fa-edit"></i></button> <button type="button" class="btn_delete btn btn-pill btn-danger btn-air-danger" ><i class="fa fa-trash"></i></button>`;
