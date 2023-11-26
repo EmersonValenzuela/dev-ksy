@@ -6,7 +6,7 @@ class Pos extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ModelClient');
+        $this->load->model('ModelPos');
     }
     public function index()
     {
@@ -23,12 +23,12 @@ class Pos extends CI_Controller
         $data['title'] = 'Punto de Venta';
         $this->template->load('admin/template', 'admin/pos', $data);
     }
-    public function get_articles()
+    public function load()
     {
         if ($this->input->post('category') != null) {
-            $result = $this->ModelArticle->get_article(array('categoria' => $this->input->post('category')));
+            $result = $this->ModelPos->get_article(array('categoria' => $this->input->post('category')));
         } else {
-            $result = $this->ModelArticle->get_article();
+            $result = $this->ModelPos->get_article();
         }
         if ($result) {
             foreach ($result as $row) {

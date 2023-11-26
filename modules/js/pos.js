@@ -45,7 +45,7 @@ const loadCategories = () => {
 };
 const loadProducts = (i) => {
 	$.ajax({
-		url: "Articulos",
+		url: "PostArticle",
 		method: "POST",
 		data: { category: i },
 		dataType: "json",

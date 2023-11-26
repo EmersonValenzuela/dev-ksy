@@ -98,3 +98,4 @@ $route['delSupplier'] = 'supplier/delete';
 
 
 $route['Punto-venta'] = 'pos';
+$route['PostArticle'] = 'pos/load';

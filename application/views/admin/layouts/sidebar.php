@@ -132,7 +132,7 @@
                                         <li><a href="dashboard-06.html">NFT</a></li>
                                         <li> <a href="dashboard-07.html">School
                                                 management</a></li>
-                                        <li> <a href="dashboard-08.html">POS</a></li>
+                                        <li> <a href="Punto-venta">POS</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-main-title">
