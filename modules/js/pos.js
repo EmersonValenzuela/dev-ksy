@@ -1,10 +1,20 @@
 $(() => {
-	loadProducts();
+	loadProducts(null);
 	loadCategories();
+	$("#p-categories").on("input", function () {
+		var inputValue = $(this).val();
+		var selectedOption = $(
+			"#data-categories option[value='" + inputValue + "']"
+		);
 
-	$("#p-categories").on("change", function () {
-		console.log($(this).val());
+		if (selectedOption.length > 0) {
+			var dataId = selectedOption.data("id");
+			loadProducts(dataId);
+		} else {
+			loadProducts(null);
+		}
 	});
+
 	$("#p-search").on("input", function () {
 		var searchTerm = $(this).val().toLowerCase();
 
@@ -28,14 +38,16 @@ const loadCategories = () => {
 		categorias.forEach(function (categoria) {
 			var option = document.createElement("option");
 			option.value = categoria.nombreCategoria;
+			option.setAttribute("data-id", categoria.idcategoria);
 			datalistElement.appendChild(option);
 		});
 	});
 };
-const loadProducts = () => {
+const loadProducts = (i) => {
 	$.ajax({
 		url: "Articulos",
-		method: "GET",
+		method: "POST",
+		data: { category: i },
 		dataType: "json",
 		async: false,
 	}).done((i) => {

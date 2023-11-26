@@ -77,7 +77,7 @@ class Article extends CI_Controller
             'condicion_articulo' => $this->input->post('prdStatus')
         );
 
-        $result = $this->ModelArticle->insert($data,"articulo");
+        $result = $this->ModelArticle->insert($data, "articulo");
         $jsonData['id'] = $result;
         $jsonData['data'] = $data;
         echo json_encode($jsonData);
@@ -85,7 +85,11 @@ class Article extends CI_Controller
     //API DATA para sacar informacion
     public function get_articles()
     {
-        $result = $this->ModelArticle->get_article();
+        if ($this->input->post('category') != null) {
+            $result = $this->ModelArticle->get_article(array('categoria' => $this->input->post('category')));
+        } else {
+            $result = $this->ModelArticle->get_article();
+        }
         if ($result) {
             foreach ($result as $row) {
                 $array['data'][] = $row;

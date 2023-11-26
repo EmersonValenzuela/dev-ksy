@@ -36,30 +36,6 @@
                                                 <div class="input-group product-search"><span class="input-group-text"><i class="search-icon text-gray" data-feather="search"></i></span>
                                                     <input class="form-control" type="text" placeholder="Buscar aqui.." list="datalistOptionssearch" id="p-search">
                                                     <datalist id="datalistOptionssearch">
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
-                                                        <option value="Bluetooth Calling Smartwatch"></option>
-                                                        <option value="Microsoft Surface Laptop"></option>
-                                                        <option value="Gaming Over Ear Headphone"></option>
-                                                        <option value="Apple iPhone 14 Plus"></option>
                                                     </datalist>
                                                 </div>
                                                 <div class="input-group product-search">
@@ -73,7 +49,7 @@
                                     </div>
                                     <div class="card-body main-our-product">
                                         <div class="row g-3 scroll-product">
-
+                                            <!----------- ##AQUI SE PINTAN LOS PRODCUTOS DE LA FUNCION LOADPRDUCTS() ------------------>
                                         </div>
                                     </div>
                                 </div>

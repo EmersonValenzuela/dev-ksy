@@ -23,4 +23,20 @@ class Pos extends CI_Controller
         $data['title'] = 'Punto de Venta';
         $this->template->load('admin/template', 'admin/pos', $data);
     }
+    public function get_articles()
+    {
+        if ($this->input->post('category') != null) {
+            $result = $this->ModelArticle->get_article(array('categoria' => $this->input->post('category')));
+        } else {
+            $result = $this->ModelArticle->get_article();
+        }
+        if ($result) {
+            foreach ($result as $row) {
+                $array['data'][] = $row;
+            }
+        } else {
+            $array['data'] = array();
+        }
+        echo json_encode($array);
+    }
 }
