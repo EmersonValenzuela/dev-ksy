@@ -71,7 +71,6 @@
 
   // Our Product Quantity Counts
   let add_quantity = document.querySelectorAll(".add-quantity");
-  console.log("add_quantity", add_quantity);
   add_quantity.forEach((item) => {
     var productCounter = {
       count: 0,

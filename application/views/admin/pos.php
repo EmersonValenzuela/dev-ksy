@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="card-body main-our-product">
                                         <div class="row g-3 scroll-product">
-                                            <!----------- ##AQUI SE PINTAN LOS PRODCUTOS DE LA FUNCION LOADPRDUCTS() ------------------>
+                                            <!----------- ##AQUI SE PINTAN LOS PRODCUTOS DE LA FUNCION LOADPRODUCTS() ------------------>
                                         </div>
                                     </div>
                                 </div>
@@ -116,64 +116,21 @@
                                             <option value="2">Savannah Nguyen</option>
                                             <option value="3">Esther </option>
                                         </select>
-                                        <h5 class="m-0">Order Details</h5>
+                                        <h5 class="m-0">Detalles de la Venta</h5>
                                         <div class="order-quantity p-b-20 border-bottom">
-                                            <div class="order-details-wrapper">
-                                                <div class="left-details">
-                                                    <div class="order-img widget-hover"><img src="<?= base_url() ?>assets/images/dashboard-8/product-categories/phone.png" alt="phone"></div>
-                                                </div>
-                                                <div class="category-details">
-                                                    <div class="order-details-right"><span class="text-gray mb-1">Category : <span class="font-dark">Phone</span></span>
-                                                        <h6 class="f-14 f-w-500 mb-3">Apple iPhone 14 Plus</h6>
-                                                        <div class="last-order-detail">
-                                                            <h6 class="txt-primary">$987.00</h6><a href="javascript:void(0)"> <i class="fa fa-trash trash-remove"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-details">
-                                                        <div class="touchspin-wrapper">
-                                                            <button class="decrement-touchspin btn-touchspin"><i class="fa fa-minus text-gray"></i></button>
-                                                            <input class="input-touchspin" id="inputData" type="number" value="9">
-                                                            <button class="increment-touchspin btn-touchspin"><i class="fa fa-plus text-gray"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="order-details-wrapper">
-                                                <div class="left-details">
-                                                    <div class="order-img widget-hover"><img src="<?= base_url() ?>assets/images/dashboard-8/product-categories/watch-2.png" alt="watch"></div>
-                                                </div>
-                                                <div class="category-details">
-                                                    <div class="order-details-right"><span class="text-gray mb-1">Category : <span class="font-dark">Watch</span></span>
-                                                        <h6 class="f-14 f-w-500 mb-3">Bluetooth Calling Smartwatch</h6>
-                                                        <div class="last-order-detail">
-                                                            <h6 class="txt-primary">$109.00</h6><a href="javascript:void(0)"><i class="fa fa-trash trash-remove"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right-details">
-                                                        <div class="touchspin-wrapper">
-                                                            <button class="decrement-touchspin btn-touchspin"><i class="fa fa-minus text-gray"></i></button>
-                                                            <input class="input-touchspin" id="inputData1" type="number" value="9">
-                                                            <button class="increment-touchspin btn-touchspin"><i class="fa fa-plus text-gray"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card-body p-0 empty-card trash-items">
+                                            <div class="card-body p-0 trash-items">
                                                 <div class="empty-cart-wrapper">
                                                     <div class="empty-cart-content"><img src="<?= base_url() ?>assets/images/dashboard-8/order-trash.gif" alt="order-trash"></div>
-                                                    <h6 class="text-gray">Your cart is empty!!!</h6><a href="product.html"> </a>
+                                                    <h6 class="text-gray">Venta Vacia!!!</h6>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="total-item">
-                                            <div class="item-number"><span class="text-gray">Item</span><span class="f-w-500">3 (Items)</span></div>
-                                            <div class="item-number"><span class="text-gray">Subtotal</span><span class="f-w-500">$1,186</span></div>
-                                            <div class="item-number border-bottom"><span class="text-gray">Fees</span><span class="f-w-500">$20</span></div>
                                             <div class="item-number pt-3 pb-0"><span class="f-w-500">Total</span>
-                                                <h6 class="txt-primary">$1,186</h6>
+                                                <h6 class="txt-primary" id="total-price">S/. 00.00</h6>
                                             </div>
                                         </div>
-                                        <h5 class="m-0 p-t-40">Payment Method</h5>
+                                        <h5 class="m-0 p-t-40">Medio de Pago</h5>
                                         <div class="payment-methods">
                                             <div>
                                                 <div class="bg-payment widget-hover"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/cash.svg" alt="cash"></div><span class="f-w-500 text-gray">Cash</span>
@@ -186,7 +143,7 @@
                                             </div>
                                         </div>
                                         <div class="place-order">
-                                            <button class="btn btn-primary btn-hover-effect w-100 f-w-500" type="button">Place Order</button>
+                                            <button class="btn btn-primary btn-hover-effect w-100 f-w-500" type="button">Realizar Venta</button>
                                         </div>
                                     </div>
                                 </div>
