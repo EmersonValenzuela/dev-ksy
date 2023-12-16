@@ -64,57 +64,19 @@
                                         <div class="header-top border-bottom pb-3">
                                             <h5 class="m-0">Customer </h5>
                                             <div class="card-header-right-icon create-right-btn"><a class="btn btn-light-primary f-w-500 f-12" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8">Create +</a></div>
-                                            <!-- Modal-->
-                                            <div class="modal fade" id="dashboard8" tabindex="-1" aria-labelledby="dashboard8" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="modaldashboard">Create Customer</h5>
-                                                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body p-0">
-                                                            <div class="text-start dark-sign-up">
-                                                                <div class="modal-body">
-                                                                    <form class="row g-3 needs-validation" novalidate="">
-                                                                        <div class="col-md-6">
-                                                                            <label class="form-label" for="validationCustom-8">First Name<span class="txt-danger">*</span></label>
-                                                                            <input class="form-control" id="validationCustom-8" type="text" placeholder="Enter your first-name" required="">
-                                                                            <div class="valid-feedback">Looks good!</div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label class="form-label" for="validationCustom09">Last Name<span class="txt-danger">*</span></label>
-                                                                            <input class="form-control" id="validationCustom09" type="text" placeholder="Enter your last-name" required="">
-                                                                            <div class="valid-feedback">Looks good!</div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label class="form-label" for="validationCustom08">Mobile Number<span class="txt-danger">*</span></label>
-                                                                            <input class="form-control" id="validationCustom08" type="number" placeholder="Mobile number" required="">
-                                                                            <div class="valid-feedback">Looks good!</div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label class="form-label" for="exampleFormControlInput8">Email<span class="txt-danger">*</span></label>
-                                                                                <input class="form-control" id="exampleFormControlInput8" type="email" placeholder="customername@gmail.com">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12 d-flex justify-content-end">
-                                                                            <button class="btn btn-primary" type="submit">Create +</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="card-body pt-0 order-details">
-                                        <select class="form-select f-w-400 f-14 text-gray py-2" aria-label="Select Customer">
-                                            <option selected="" disabled="">Select Customer</option>
-                                            <option value="1">Brooklyn Simmons</option>
-                                            <option value="2">Savannah Nguyen</option>
-                                            <option value="3">Esther </option>
+                                        <select class="form-select f-w-400 f-14 text-gray py-2" aria-label="Select Customer" id="select-customer">
+                                            <option selected="" disabled="">Selecciona Cliente</option>
+
+                                        </select> <br>
+                                        <select class="form-select f-w-400 f-14 text-gray py-2" aria-label="Select Customer" id="select-method">
+                                            <option selected="" disabled="">Tipo de Comprobante</option>
+                                            <option value="B">Boleta</option>
+                                            <option value="F">Factura</option>
+                                            <option value="N">Nota Venta</option>
                                         </select>
                                         <h5 class="m-0">Detalles de la Venta</h5>
                                         <div class="order-quantity p-b-20 border-bottom">
@@ -126,24 +88,28 @@
                                             </div>
                                         </div>
                                         <div class="total-item">
-                                            <div class="item-number pt-3 pb-0"><span class="f-w-500">Total</span>
+                                            <div class="item-number pt-3 pb-0">
+                                                <span class="f-w-500">Total</span>
                                                 <h6 class="txt-primary" id="total-price">S/. 00.00</h6>
+                                            </div> <br>
+                                            <div class="item-number border-bottom">
+                                                <span class="text-gray">Medio Pago</span><span class="f-w-500" id="method-payment" data-value=""> - - - - </span>
                                             </div>
                                         </div>
                                         <h5 class="m-0 p-t-40">Medio de Pago</h5>
                                         <div class="payment-methods">
                                             <div>
-                                                <div class="bg-payment widget-hover"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/cash.svg" alt="cash"></div><span class="f-w-500 text-gray">Cash</span>
+                                                <div class="bg-payment widget-hover" data-method="cash" data-name="Efectivo"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/cash.svg" alt="cash"></div><span class="f-w-500 text-gray">Cash</span>
                                             </div>
                                             <div>
-                                                <div class="bg-payment widget-hover"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/card.svg" alt="card"></div><span class="f-w-500 text-gray">Card</span>
+                                                <div class="bg-payment widget-hover" data-method="card" data-name="Tarjeta"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/card.svg" alt="card"></div><span class="f-w-500 text-gray">Card</span>
                                             </div>
                                             <div>
-                                                <div class="bg-payment widget-hover"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/wallet.svg" alt="wallet"></div><span class="f-w-500 text-gray">E-Wallet</span>
+                                                <div class="bg-payment widget-hover" data-method="wallet" data-name="E-Billetera"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/wallet.svg" alt="wallet"></div><span class="f-w-500 text-gray">E-Wallet</span>
                                             </div>
                                         </div>
                                         <div class="place-order">
-                                            <button class="btn btn-primary btn-hover-effect w-100 f-w-500" type="button">Realizar Venta</button>
+                                            <button class="btn btn-primary btn-hover-effect w-100 f-w-500" type="button" id="go-payment">Realizar Venta</button>
                                         </div>
                                     </div>
                                 </div>
@@ -153,4 +119,77 @@
                 </div>
             </div>
             <!-- Container-fluid Ends-->
+        </div>
+
+        <!-- Modal-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="dashboard8" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="id_title"></h4>
+                        <button class="btn-close theme-close bg-primary" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-bookmark theme-form" id="frm_client">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="names_cli">Apellidos y Nombres</label>
+                                            <input class="form-control input-air-primary" id="names_cli" name="names_cli" type="text" placeholder="Ejem. Nombre de Cliente" autofocus>
+                                            <input class="form-control input-air-primary" id="id_client" name="id_client" type="hidden" placeholder="Ejem. Nombre de Cliente" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="type_docc">Tipo de Documento</label>
+                                            <select class="form-select input-air-primary" id="type_docc" name="type_docc">
+                                                <option value="0" selected disabled>Seleccione</option>
+                                                <option value="DNI">DNI</option>
+                                                <option value="Carnet de Extranjeria">Carnet de Extranjeria</option>
+                                                <option value="RUC">RUC</option>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="number_docc">Numero de Documento</label>
+                                                <input class="form-control input-air-primary input_numb" id="number_docc" type="text" placeholder="Ejem. 3" name="number_docc">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="addressc">Dirección</label>
+                                                <input class="form-control input-air-primary" id="addressc" type="text" placeholder="Ejem. 3" name="addressc">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="process">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="phonec">Telefono o Celular</label>
+                                                <input class="form-control input-air-primary input_numb" id="phonec" type="text" placeholder="Ejem. 3" name="phonec">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="emailc">Correo Electronico</label>
+                                                <input class="form-control input-air-primary" id="emailc" type="text" placeholder="Ejem. 3" name="emailc">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="card-footer text-end">
+                                    <button class="btn btn-danger" type="button" data-bs-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
+                                    <button class="btn btn-info" type="submit" id="btn_send"><i class="fa fa-save"></i> Guardar Cliente</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>

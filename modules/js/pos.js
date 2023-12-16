@@ -1,6 +1,7 @@
 $(() => {
 	loadProducts(null);
 	loadCategories();
+	getClient(0);
 	$("#p-categories").on("input", function () {
 		var inputValue = $(this).val();
 		var selectedOption = $(
@@ -23,6 +24,45 @@ $(() => {
 			var productText = $(this).text().toLowerCase();
 			$(this).toggle(productText.includes(searchTerm));
 		});
+	});
+	$("#go-payment").on("click", function () {
+		carrito.client = $("#select-customer").val();
+		carrito.voucher = $("#select-method").val();
+		carrito.payment = $("#method-payment").text();
+		console.log(carrito);
+	});
+	$("#btn_send").on("click", (e) => {
+		e.preventDefault();
+		let btn = document.querySelector("#btn_send");
+		let f = $(this);
+
+		$.ajax({
+			url: "saveClients",
+			type: "post",
+			data: $("#frm_client").serialize(),
+			dataType: "json",
+			beforeSend: () => {
+				btn.innerHTML =
+					"<i class='fa fa-spin fa-spinner'></i> Guardando Cliente";
+				btn.disabled = true;
+				btn.form.firstElementChild.disabled = true;
+			},
+		})
+			.done((v) => {
+				console.log(v.data);
+				alert_type("Cliente añadido correctamente", "Vista POS", "success");
+				getClient(v.id);
+				$("#dashboard8").modal("hide");
+				$("#frm_client")[0].reset();
+			})
+			.fail((e) => {
+				console.log(e.responseText);
+			})
+			.always(() => {
+				btn.innerHTML = '<i class="fa fa-save"></i> Guardar Cliente';
+				btn.disabled = false;
+				btn.form.firstElementChild.disabled = false;
+			});
 	});
 });
 const loadCategories = () => {
@@ -144,7 +184,7 @@ const loadProducts = (category) => {
 					}
 					if (isDecrement) {
 						isDecrement[0].addEventListener("click", function () {
-							if (inputData > 0) {	
+							if (inputData > 0) {
 								let inc = this.getAttribute("data-increment");
 								inputData--;
 
@@ -188,9 +228,9 @@ function actualizarCarrito() {
                     </div>
                     <div class="right-details">
                         <div class="touchspin-wrapper">
-                            <button class="decrement-touchspin btn-touchspin" data-decrement="${item.articulo.idarticulo}"><i class="fa fa-minus text-gray"></i></button>
+                            <button disabled class="decrement-touchspin btn-touchspin" data-decrement="${item.articulo.idarticulo}"></button>
                             <input class="input-touchspin"  id="inputData" type="number" value="${item.cantidad}">
-                            <button class="increment-touchspin btn-touchspin" data-increment="${item.articulo.idarticulo}"><i class="fa fa-plus text-gray"></i></button>
+                            <button disabled class="increment-touchspin btn-touchspin" data-increment="${item.articulo.idarticulo}"></button>
                         </div>
                     </div>
                 </div>
@@ -241,3 +281,36 @@ function Quantity() {
 	}
 	$("#total-price").text(montoTotal.toFixed(2));
 }
+
+function getClient(id) {
+	$.ajax({
+		url: "Clientes",
+		method: "GET",
+		dataType: "json",
+		async: false,
+	}).done((i) => {
+		const clients = i.data;
+		const customers = document.getElementById("select-customer");
+		customers.innerHTML = "";
+
+		clients.forEach(function (client) {
+			var option = document.createElement("option");
+			option.value = client.idcliente;
+			option.text = client.nombreCliente;
+			if (id == client.idcliente) {
+				option.selected = true;
+			}
+			customers.appendChild(option);
+		});
+	});
+}
+
+const btnMethods = document.querySelectorAll(".bg-payment");
+const textMethod = document.getElementById("method-payment");
+
+btnMethods.forEach(function (boton) {
+	boton.addEventListener("click", function () {
+		const name = this.getAttribute("data-name");
+		textMethod.innerText = name;
+	});
+});

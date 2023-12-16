@@ -22,4 +22,7 @@ class ModelPos extends CI_Model
             ->get()
             ->result();
     }
+    public function insertPayment(){
+
+    }
 }
