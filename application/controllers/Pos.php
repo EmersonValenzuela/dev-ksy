@@ -78,8 +78,12 @@ class Pos extends CI_Controller
                     $this->ModelPos->insert($saleDetail, 'detalle_venta');
                 }
             }
+            $jsonData['id'] = $idSale;
+            $jsonData['user'] = "ADMIN";
+            
 
-            echo json_encode($values);
+
+            echo json_encode($jsonData);
 
             // Si todo está bien, realizar más acciones o responder a la solicitud
 

@@ -35,6 +35,9 @@
 <script src="<?= base_url() ?>assets/js/datatable/datatables/datatable.custom.js"></script>
 <script src="<?= base_url() ?>assets/js/sweet-alert/sweetalert.min.js"></script>
 <script src="<?= base_url() ?>assets/js/select2/select2.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?= base_url() ?>assets/js/script.js"></script>

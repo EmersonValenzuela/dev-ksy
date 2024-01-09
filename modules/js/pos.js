@@ -25,6 +25,8 @@ $(() => {
 			$(this).toggle(productText.includes(searchTerm));
 		});
 	});
+
+	// go 
 	$("#go-payment").on("click", function () {
 		carrito.client = $("#select-customer").val();
 		carrito.voucher = $("#select-method").val();
@@ -37,10 +39,144 @@ $(() => {
 			dataType: "json",
 			data: { carrito: carrito }
 		}).done((e) => {
-			console.log(e);
-			
-		})
+
+			// URL de la imagen
+			const imagePath = "http://localhost/dev-ksy/assets/images/logo/logo2.png";
+			// Array para almacenar detalles de la venta
+			var saleDetails = [];
+
+			// Array para almacenar filas de la tabla de detalles
+			var tableRows = [];
+
+			// Iterar sobre las propiedades del objeto
+			for (var key in carrito) {
+				// Verificar si la clave es numérica
+				if (!isNaN(key)) {
+					var value = carrito[key];
+
+					// Construir objeto de detalles de la venta
+					var saleDetail = {
+						idventa: key, // Supongamos que la clave es el id de la venta
+						idarticulo: value.articulo.idarticulo,
+						nombre_articulo: value.articulo.nombre_articulo,
+						cantidad: value.cantidad,
+						precio_unitario: value.articulo.precio_venta,
+						precio_total: (value.cantidad * value.articulo.precio_venta).toFixed(2)
+					};
+
+					// Agregar el objeto de detalles al array
+					saleDetails.push(saleDetail);
+
+					// Construir una fila para la tabla de detalles
+					var tableRow = [
+						saleDetail.nombre_articulo,
+						saleDetail.cantidad,
+						saleDetail.precio_unitario,
+						saleDetail.precio_total
+					];
+
+					// Agregar la fila al array de filas de la tabla
+					tableRows.push(tableRow);
+				}
+			}
+			var igv = (18 * carrito.total_price) / 100;
+			igv = igv.toFixed(2);
+			var subotal = carrito.total_price - igv;
+			subotal = subotal.toFixed(2);
+			// Convertir la imagen a dataURL
+			toDataURL(imagePath, function (dataURL) {
+				// Obtener la fecha y hora actual formateada con moment.js
+				var currentDate = moment().format("DD/MM/YYYY HH:mm:ss");
+
+				// Crear un documento PDF con pdfmake y establecer los márgenes
+				var docDefinition = {
+					content: [
+						{
+							image: dataURL, // Utilizar la cadena dataURL de la imagen
+							width: 200, // Ancho de la imagen
+							alignment: "center"
+						},
+						{ text: '\nTicket de Venta', style: 'header', alignment: 'center' },
+						{ text: '\n' + carrito.voucher + '001 - ' + e.id, style: 'header', alignment: 'center' },
+						{ text: '\n' + currentDate, alignment: 'right' },
+						{ text: '\nVendedor: ' + e.user + '\n\n\n', alignment: 'center' },
+						{
+							table: {
+								headerRows: 1,
+								widths: ['*', 'auto', 'auto', 'auto'], // '*' significa ancho automático
+								body: [
+									[{ text: 'Nombre de Producto', bold: true }, { text: 'Cantidad', bold: true }, { text: 'Precio Unitario', bold: true }, { text: 'Precio Total', bold: true }],
+									...tableRows
+								]
+							},
+							layout: 'lightHorizontalLines', // Añadir líneas horizontales ligeras
+							style: 'tableStyle'
+						},
+						{
+							columns: [
+								{ text: '\n\nSubtotal', alignment: 'right' },
+								{ text: '\n\n' + subotal, alignment: 'right' }
+							]
+						},
+						{
+							columns: [
+								{ text: 'IGV', alignment: 'right' },
+								{ text: igv, alignment: 'right' }
+							]
+						},
+						{
+
+							columns: [
+								{ text: 'Total', alignment: 'right' },
+								{ text: carrito.total_price, alignment: 'right' }
+							]
+						},
+						{
+							text: '\n\nMétodo de pago: ' + carrito.payment + '\n\n\n', alignment: 'center'
+						},
+						{ qr: 'text in QR', alignment: 'center' }
+					],
+					styles: {
+						header: { fontSize: 18, bold: true },
+					},
+					// Establecer los márgenes del documento
+					margin: [30, 30, 30, 30] // Márgenes: arriba, derecha, abajo, izquierda
+				};
+
+				// Generar el PDF
+				var pdfDoc = pdfMake.createPdf(docDefinition);
+
+				// Convertir el PDF a un blob
+				pdfDoc.getBlob((blob) => {
+					// Crear una URL para el blob
+					var url = URL.createObjectURL(blob);
+
+					// Abrir una nueva ventana y cargar el PDF
+					var ticketWindow = window.open(url, '_blank');
+				});
+
+			});
+		});
 	});
+
+	// Función para convertir una imagen a dataURL
+	function toDataURL(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function () {
+			var reader = new FileReader();
+			reader.onloadend = function () {
+				callback(reader.result);
+			};
+			reader.readAsDataURL(xhr.response);
+		};
+		xhr.open('GET', url);
+		xhr.responseType = 'blob';
+		xhr.send();
+	}
+
+
+
+
 	$("#btn_send").on("click", (e) => {
 		e.preventDefault();
 		let btn = document.querySelector("#btn_send");
