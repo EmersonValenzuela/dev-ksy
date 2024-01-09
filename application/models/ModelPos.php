@@ -22,7 +22,16 @@ class ModelPos extends CI_Model
             ->get()
             ->result();
     }
-    public function insertPayment(){
+    public function insert($data, $table)
+    {
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
+    }
 
+    public function update($id, $data, $table)
+    {
+        $this->db->where($id);
+        $this->db->update($table, $data);
+        return $this->db->insert_id();
     }
 }

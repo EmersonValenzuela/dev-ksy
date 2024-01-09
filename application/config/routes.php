@@ -96,6 +96,8 @@ $route['getSupplier'] = 'supplier/get_supplier';
 $route['editSupplier'] = 'supplier/update';
 $route['delSupplier'] = 'supplier/delete';
 
+$route['saveSale'] = 'pos/sale';
+
 
 $route['Punto-venta'] = 'pos';
 $route['PostArticle'] = 'pos/load';

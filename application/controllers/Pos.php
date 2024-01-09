@@ -39,4 +39,53 @@ class Pos extends CI_Controller
         }
         echo json_encode($array);
     }
+    public function sale()
+    {
+        try {
+            $values = $this->input->post('carrito');
+
+            // Calcular el IGV
+            $igv = $values['total_price'] * 0.18;
+            $igv = round($igv, 2);
+
+            // Crear el array para la venta
+            $sale = array(
+                "usuario" => 1,
+                "cliente" => $values['client'],
+                "tipo_comprobante" => $values['voucher'],
+                "serie_comprobante" => $values['voucher'] . "001",
+                "impuesto" => $igv,
+                "total_venta" => $values['total_price'],
+                "estado" => 1
+            );
+
+            // Insertar la venta en la base de datos
+            $idSale = $this->ModelPos->insert($sale, 'venta');
+
+            // Actualizar el número de comprobante
+            $this->ModelPos->update(array('idventa' => $idSale), array('num_comprobante' => $idSale), 'venta');
+
+            // Itera sobre las claves numéricas y realiza la inserción
+            foreach ($values as $key => $value) {
+                if (is_numeric($key)) {
+                    $idarticulo = $value["articulo"]["idarticulo"];
+                    $saleDetail = array(
+                        "idventa" => $idSale,
+                        "idarticulo" => $idarticulo,
+                        "cantidad" => $value['cantidad'],
+                        "precio_detalle" => $value["articulo"]["precio_venta"],
+                    );
+                    $this->ModelPos->insert($saleDetail, 'detalle_venta');
+                }
+            }
+
+            echo json_encode($values);
+
+            // Si todo está bien, realizar más acciones o responder a la solicitud
+
+        } catch (Exception $e) {
+            // Manejar la excepción, puedes imprimir mensajes de error o loguearlos
+            echo json_encode('Error: ' . $e->getMessage());
+        }
+    }
 }

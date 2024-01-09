@@ -29,7 +29,17 @@ $(() => {
 		carrito.client = $("#select-customer").val();
 		carrito.voucher = $("#select-method").val();
 		carrito.payment = $("#method-payment").text();
-		console.log(carrito);
+		carrito.total_price = $("#total-price").text();
+
+		$.ajax({
+			url: "saveSale",
+			type: "post",
+			dataType: "json",
+			data: { carrito: carrito }
+		}).done((e) => {
+			console.log(e);
+			
+		})
 	});
 	$("#btn_send").on("click", (e) => {
 		e.preventDefault();
