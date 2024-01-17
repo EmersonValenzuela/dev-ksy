@@ -1,5 +1,5 @@
 <body>
-<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/style2.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/style2.css">
     <!-- loader starts-->
     <div class="loader-wrapper">
         <div class="loader-index"> <span></span></div>
@@ -23,7 +23,7 @@
         <div class="page-header">
             <div class="header-wrapper row m-0">
                 <div class="header-logo-wrapper col-auto p-0">
-                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a></div>
+                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> " alt="Icono" class="icon"></a></div>
                     <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i></div>
                 </div>
 
@@ -46,21 +46,7 @@
                             <div class="onhover-show-div notification-dropdown">
                                 <h6 class="f-18 mb-0 dropdown-title">Notitications
                                 </h6>
-                                <ul>
-                                    <li class="b-l-primary border-4">
-                                        <p>Delivery processing <span class="font-danger">10 min.</span></p>
-                                    </li>
-                                    <li class="b-l-success border-4">
-                                        <p>Order Complete<span class="font-success">1 hr</span></p>
-                                    </li>
-                                    <li class="b-l-secondary border-4">
-                                        <p>Tickets Generated<span class="font-secondary">3 hr</span></p>
-                                    </li>
-                                    <li class="b-l-warning border-4">
-                                        <p>Delivery Complete<span class="font-warning">6 hr</span></p>
-                                    </li>
-                                    <li><a class="f-w-700" href="#">Check all</a></li>
-                                </ul>
+
                             </div>
                         </li>
                         <li class="profile-nav onhover-dropdown pe-0 py-0">
@@ -90,17 +76,17 @@
             <!-- Page Sidebar Start-->
             <div class="sidebar-wrapper" sidebar-layout="stroke-svg">
                 <div>
-                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH); ?> "alt="Logo de la empresa" class="dashboard"></a>
+                    <div class="logo-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH); ?> " alt="Logo de la empresa" class="dashboard"></a>
                         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
                         <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid">
                             </i></div>
                     </div>
-                    <div class="logo-icon-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a></div>
+                    <div class="logo-icon-wrapper"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> " alt="Icono" class="icon"></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                         <div id="sidebar-menu">
                             <ul class="sidebar-links" id="simple-bar">
-                                <li class="back-btn"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> "alt="Icono" class="icon"></a>
+                                <li class="back-btn"><a href="<?= base_url() ?>"><img src="<?php echo base_url(LOGO_PATH2); ?> " alt="Icono" class="icon"></a>
                                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                                 </li>
                                 <li class="pin-title sidebar-main-title">
@@ -108,32 +94,9 @@
                                         <h6>Fijados</h6>
                                     </div>
                                 </li>
-                                <li class="sidebar-main-title">
-                                    <div>
-                                        <h6 class="lan-1">General</h6>
-                                    </div>
-                                </li>
-                                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                    <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
-                                        <svg class="stroke-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-home"></use>
-                                        </svg>
-                                        <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
-                                        </svg><span class="lan-3">Dashboard
-                                        </span></a>
-                                    <ul class="sidebar-submenu">
-                                        <li><a class="lan-4" href="<?= base_url() ?>">Default</a></li>
-                                        <li><a class="lan-5" href="dashboard-02.html">Ecommerce</a></li>
-                                        <li><a href="dashboard-03.html">Online
-                                                course</a></li>
-                                        <li><a href="dashboard-04.html">Crypto</a></li>
-                                        <li><a href="dashboard-05.html">Social</a></li>
-                                        <li><a href="dashboard-06.html">NFT</a></li>
-                                        <li> <a href="dashboard-07.html">School
-                                                management</a></li>
-                                        <li> <a href="Punto-venta">POS</a></li>
-                                    </ul>
+                                <li class="sidebar-list">
+                                    <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="Punto-venta">
+                                        </svg><span>POS</span></a>
                                 </li>
                                 <li class="sidebar-main-title">
                                     <div>

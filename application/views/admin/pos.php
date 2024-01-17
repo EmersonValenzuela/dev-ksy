@@ -29,8 +29,8 @@
                                     <div class="card-header card-no-border">
                                         <div class="main-product-wrapper">
                                             <div class="product-header">
-                                                <h5>Our Product</h5>
-                                                <p class="f-m-light mt-1 text-gray f-w-500">Browse & Discover Thousands of products here!</p>
+                                                <h5>Nuestro producto</h5>
+                                                <p class="f-m-light mt-1 text-gray f-w-500">¡Explore y descubra miles de productos aquí!</p>
                                             </div>
                                             <div class="product-body">
                                                 <div class="input-group product-search"><span class="input-group-text"><i class="search-icon text-gray" data-feather="search"></i></span>
@@ -62,7 +62,7 @@
                                 <div class="card customer-sticky">
                                     <div class="card-header card-no-border pb-3">
                                         <div class="header-top border-bottom pb-3">
-                                            <h5 class="m-0">Customer </h5>
+                                            <h5 class="m-0">Cliente </h5>
                                             <div class="card-header-right-icon create-right-btn"><a class="btn btn-light-primary f-w-500 f-12" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8">Create +</a></div>
 
                                         </div>
@@ -99,13 +99,13 @@
                                         <h5 class="m-0 p-t-40">Medio de Pago</h5>
                                         <div class="payment-methods">
                                             <div>
-                                                <div class="bg-payment widget-hover" data-method="cash" data-name="Efectivo"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/cash.svg" alt="cash"></div><span class="f-w-500 text-gray">Cash</span>
+                                                <div class="bg-payment widget-hover" data-method="cash" data-name="Efectivo"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/cash.svg" alt="cash"></div><span class="f-w-500 text-gray">Efectivo</span>
                                             </div>
                                             <div>
-                                                <div class="bg-payment widget-hover" data-method="card" data-name="Tarjeta"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/card.svg" alt="card"></div><span class="f-w-500 text-gray">Card</span>
+                                                <div class="bg-payment widget-hover" data-method="card" data-name="Tarjeta"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/card.svg" alt="card"></div><span class="f-w-500 text-gray">tarjeta</span>
                                             </div>
                                             <div>
-                                                <div class="bg-payment widget-hover" data-method="wallet" data-name="E-Billetera"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/wallet.svg" alt="wallet"></div><span class="f-w-500 text-gray">E-Wallet</span>
+                                                <div class="bg-payment widget-hover" data-method="wallet" data-name="E-Billetera"> <img src="<?= base_url() ?>assets/images/dashboard-8/payment-option/wallet.svg" alt="wallet"></div><span class="f-w-500 text-gray">Billetera virtual</span>
                                             </div>
                                         </div>
                                         <div class="place-order">
