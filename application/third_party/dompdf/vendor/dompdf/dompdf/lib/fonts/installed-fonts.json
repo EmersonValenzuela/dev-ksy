@@ -1,0 +1,28 @@
+{
+    "rubik": {
+        "500_italic": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_500_italic_5952053447edfb19706d4a9dd7a2a39e",
+        "bold_italic": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_bold_italic_9eac7a1a70164cf298a3f0dd47340aaa",
+        "normal": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_normal_d9b2a42c60448a79e4065da6017340d7",
+        "500": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/rubik_500_b9ba48dc6e485eaab83b47088d006576",
+        "bold": "rubik_bold_07cec021e05e1597f19fa869a08df022"
+    },
+    "roboto": {
+        "italic": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_italic_ac000b8af99d184822854e4bcb258a54",
+        "500_italic": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_500_italic_15322d19ea780983c64be3a3e22f9fb5",
+        "bold_italic": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_bold_italic_dedf170e7b28335b8c22272ed1c500fa",
+        "300": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_300_20947770b7ebe45c4c4a1a9d0dacdb22",
+        "normal": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_normal_4ae3b0e72e70e24386fa238d87e8ec87",
+        "500": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_500_f66aa0f241d9978703cee3ec229f5468",
+        "bold": "C:\\xampp\\htdocs\\dev-acuario\\application\\third_party\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/roboto_bold_150b6b28e3571b4401d7a811fc9bc929",
+        "900": "roboto_900_9892f16e3d1a0621f44c7c9884ef1c79"
+    },
+    "fontawesome": {
+        "normal": "fontawesome_normal_46bf55665a7dc6b1ef960873a8b5b20c"
+    },
+    "icofont": {
+        "normal": "icofont_normal_301246684604c55953ee1c1df24a3e79"
+    },
+    "themify": {
+        "normal": "themify_normal_a764d5dec0ab4fad6a305b1a0be81443"
+    }
+}

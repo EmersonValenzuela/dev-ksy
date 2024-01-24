@@ -154,6 +154,24 @@
                                         <li><a class="lan-5" href="Gestionar-Articulos">Articulo</a></li>
                                     </ul>
                                 </li>
+                                <li class="sidebar-main-title">
+                                    <div>
+                                        <h6>REPORTES</h6>
+                                    </div>
+                                </li>
+                                <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                    <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
+                                        <svg class="stroke-icon">
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
+                                        </svg>
+                                        <svg class="fill-icon">
+                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                        </svg><span class="lan-3">Reportes de Ventas
+                                        </span></a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a class="lan-4" href="Gestionar-Categorias">Ventas</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
