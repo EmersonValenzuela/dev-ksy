@@ -6,6 +6,7 @@ class Article extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+		check_login_user();
         $this->load->model('ModelArticle');
     }
     public function index()
@@ -78,6 +79,50 @@ class Article extends CI_Controller
         );
 
         $result = $this->ModelArticle->insert($data, "articulo");
+        $jsonData['id'] = $result;
+        $jsonData['data'] = $data;
+        echo json_encode($jsonData);
+    }
+
+    public function update()
+    {
+        $data  = array();
+        if (!empty($_FILES['archivo']['name'])) {
+            $config['upload_path'] = 'modules/uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg|PNG|JPG|JPEG';
+
+            $image_name = date('dmYhis') . '_' . rand(0, 99999) . "." . pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION);
+
+            $config['file_name'] = $image_name;
+
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('archivo')) {
+                $error = array('error' => $this->upload->display_errors());
+                echo json_encode($error);
+            }
+            $data['imagen_articulo'] = $image_name;
+        } else {
+        }
+
+        $cod = $this->input->post('prdCod');
+        $tags = $this->input->post('tags');
+
+
+        $data['categoria'] = $this->input->post('prdCategoria');
+        $data['codigo_articulo'] = $cod;
+        $data['nombre_articulo'] = $this->input->post('prdtitulo');
+        $data['stock_articulo'] = $this->input->post('prdStock');
+        $data['precio_venta'] = $this->input->post('prdInitialCost');
+        $data['precio_compra'] = $this->input->post('prdSelling');
+        $data['tipoCambio'] = $this->input->post('prdChoose');
+        $data['descripcion_articulo'] = $this->input->post('prdDescription');
+        $data['etiquetaArticulo'] = $tags;
+        $data['condicion_articulo'] = $this->input->post('prdStatus');
+
+
+        $result = $this->ModelArticle->update(array('idarticulo' => $this->input->post('idArticle')), $data, "articulo");
         $jsonData['id'] = $result;
         $jsonData['data'] = $data;
         echo json_encode($jsonData);

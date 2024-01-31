@@ -51,18 +51,14 @@
                         </li>
                         <li class="profile-nav onhover-dropdown pe-0 py-0">
                             <div class="media profile-media"><img class="b-r-10" src="<?= base_url() ?>assets/images/dashboard/profile.png" alt>
-                                <div class="media-body"><span>Emay Walter</span>
-                                    <p class="mb-0">Admin <i class="middle fa fa-angle-down"></i></p>
+                                <div class="media-body"><span><?= $this->session->userdata('nombre'); ?></span>
+                                    <p class="mb-0"><?= obtenerNombreRol($this->session->userdata('cargo')) ?> <i class="middle fa fa-angle-down"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
-                                <li><a href="#"><i data-feather="user"></i><span>Account
+                                <li><a href="#"><i data-feather="user"></i><span>Cuenta
                                         </span></a></li>
-                                <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-                                <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-                                <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-                                <li><a href="#"><i data-feather="log-in"> </i><span>Log
-                                            in</span></a></li>
+                                <li><a href="<?=base_url('logout')?>"><i data-feather="log-in"> </i><span>Salir</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -93,6 +89,10 @@
                                     <div>
                                         <h6>Fijados</h6>
                                     </div>
+                                </li>
+                                <li class="sidebar-list">
+                                    <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="Dashboard">
+                                        </svg><span>Inicio</span></a>
                                 </li>
                                 <li class="sidebar-list">
                                     <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="Punto-venta">
@@ -169,7 +169,7 @@
                                         </svg><span class="lan-3">Reportes de Ventas
                                         </span></a>
                                     <ul class="sidebar-submenu">
-                                        <li><a class="lan-4" href="Gestionar-Categorias">Ventas</a></li>
+                                        <li><a class="lan-4" href="Reporte-Ventas">Ventas</a></li>
                                     </ul>
                                 </li>
                             </ul>

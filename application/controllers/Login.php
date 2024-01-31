@@ -23,6 +23,14 @@ class Login extends CI_Controller
 		$r = $this->LoginModel->auth_user_login(array('login' => $u), 'usuario');
 		if ($r) {
 			if ($r->clave == $p) {
+				$data = array(
+					'idusuario' => $r->idusuario,
+					'nombre' => $r->nombre,
+					'cargo' => $r->cargo,
+					'is_user_login' => TRUE,
+				);
+				$this->session->set_userdata($data);
+
 				$jsonData['rsp'] = 200;
 			} else {
 				$jsonData['rsp'] = 400;
@@ -32,5 +40,16 @@ class Login extends CI_Controller
 		}
 		header('Content-type: application/json; charset=utf-8');
 		echo json_encode($jsonData);
+	}
+	public function logout()
+	{
+		$array_items = array('idusuario', 'nombre', 'cargo', 'is_user_login');
+
+		$this->session->unset_userdata($array_items);
+
+		if (isset($_SERVER['HTTP_REFERER']))
+			redirect($_SERVER['HTTP_REFERER']);
+		else
+			redirect('/', 'refresh');
 	}
 }

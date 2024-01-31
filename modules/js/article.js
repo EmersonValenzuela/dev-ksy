@@ -26,14 +26,14 @@ $(($) => {
 			},
 			{
 				data: "condicion_articulo",
-				render: function(data,type,row) {
+				render: function (data, type, row) {
 					return condition(data);
-				}
+				},
 			},
 			{
 				data: "idarticulo",
-				render: function(data, type, row) {
-					return btnActions(data,);
+				render: function (data, type, row) {
+					return btnActions(data);
 				},
 			},
 		],
@@ -45,8 +45,8 @@ $(($) => {
 		clearform();
 
 		addCode();
-		$("#btn_send").removeClass("hidden");
-		$("#btn_edit").addClass("hidden");
+		$("#btn-update").addClass("hidden");
+		$("#btn-new").removeClass("hidden");
 		title.html("Agregar Articulo");
 		$("#mdl_add").modal("show");
 	});
@@ -75,11 +75,56 @@ $(($) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log("Respuesta del servidor:", data);
+				alert_type(
+					"Articulo añadido correctamente",
+					"Vista Articulo",
+					"success"
+				);
+				$("#mdl_add").modal("hide");
+				$("#form-new-article")[0].reset();
 
 				// Reactiva el botón y restaura su texto original
 				submitButton.disabled = false;
 				submitButton.textContent = "Enviar";
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+
+				// En caso de error, asegúrate de reactivar el botón y restaurar su texto
+				submitButton.disabled = false;
+				submitButton.textContent = "Enviar";
+			});
+	});
+
+	$("#btn-update-article").on("click", (e) => {
+		const submitButton = $(e.target);
+		const tags = document.getElementById("basic-tags").value;
+		const dataTags = JSON.parse(tags);
+		const valuesArray = dataTags.map((obj) => obj.value);
+		const resultTags = valuesArray.join(",");
+
+		const inputFile = document.getElementById("prdImage");
+
+		const formData = new FormData(document.getElementById("form-new-article"));
+		formData.append("tags", resultTags);
+		formData.append("archivo", inputFile.files[0]);
+		fetch("editArticle", {
+			method: "POST",
+			body: formData,
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				alert_type(
+					"Articulo actualizado correctamente",
+					"Vista Articulo",
+					"success"
+				);
+				$("#mdl_add").modal("hide");
+				$("#form-new-article")[0].reset();
+
+				// Reactiva el botón y restaura su texto original
+				submitButton.disabled = false;
+				submitButton.textContent = "Actualizar";
 			})
 			.catch((error) => {
 				console.error("Error:", error);
@@ -145,48 +190,23 @@ $(($) => {
 	//ACTION MODAL SHOW EDIT
 	t.on("click", ".editar_btn", function (e) {
 		let data = t.row(e.target.closest("tr")).data();
-		title.html("Editar Categoria"); // funcion editar
-		$("#btn_send").addClass("hidden");
-		$("#btn_edit").removeClass("hidden");
-		$("#id_category").val(data.idcategoria);
+		title.html("Editar Articulo"); // funcion editar
+		$("#btn-new").addClass("hidden");
+		$("#btn-update").removeClass("hidden");
+		$("#idArticle").val(data.idarticulo);
 
-		$.ajax({
-			url: "getCategory",
-			type: "post",
-			data: { i: data.idcategoria },
-			dataType: "json",
-			beforeSend: () => {},
-		})
-			.done((data) => {
-				const array = data.result;
-				array.forEach((item) => {
-					$("#names_c").val(item.nombreCategoria);
-					$("#description").val(item.descripcionCategoria);
-					$("#condition").val(item.condicionCategoria).change();
-					$("#mdl_add").modal("show");
-				});
-			})
-			.fail((e) => {
-				console.error(e.responseText);
-			});
-	});
+		$("#codProduc").val(data.codigo_articulo);
+		$("#productTitle1").val(data.nombre_articulo);
+		$("#prdDescription").val(data.descripcion_articulo);
+		$("#prdCategoria").val(data.categoria).prop("selected", true);
+		$("#basic-tags").val(data.etiquetaArticulo);
+		$("#publishStatus").val(data.condicion_articulo).prop("selected", true);
+		$("#initialCost").val(data.precio_compra);
+		$("#sellingPrice").val(data.precio_venta);
+		$("#prdChoose").val(data.tipoCambio);
+		$("#productStock1").val(data.stock_articulo);
 
-	$("#btn_edit").on("click", (e) => {
-		e.preventDefault();
-		$.ajax({
-			url: "editCategory",
-			type: "post",
-			data: $("#frm_article").serialize(),
-			dataType: "json",
-			beforeSend: () => {},
-		}).done((data) => {
-			if ((data.rsp = 200)) {
-				alert_type("Usuario editado correctamente", "Vista Usuario", "success"); //cambiar
-				t.ajax.reload();
-			} else {
-				alert_type("Error", "Vista Usuario", "error"); //cambiar
-			}
-		});
+		$("#mdl_add").modal("show");
 	});
 
 	t.on("click", ".btn_delete", function (e) {
@@ -239,9 +259,7 @@ const addCode = () => {
 	});
 };
 
-const clearform = () => {
-
-};
+const clearform = () => {};
 
 const btnActions = (i) => {
 	return `<button type="button" class="editar_btn btn btn-pill btn-warning btn-air-warning"><i class="fa fa-edit"></i></button> <button type="button" class="btn_delete btn btn-pill btn-danger btn-air-danger" ><i class="fa fa-trash"></i></button>`;

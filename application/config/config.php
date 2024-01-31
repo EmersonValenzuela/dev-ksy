@@ -37,6 +37,7 @@ $config['base_url'] = BASE_URL;
 |
 */
 $config['index_page'] = 'index.php';
+date_default_timezone_set('America/Lima');
 
 /*
 |--------------------------------------------------------------------------

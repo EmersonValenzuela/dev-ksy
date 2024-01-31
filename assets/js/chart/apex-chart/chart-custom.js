@@ -2225,7 +2225,7 @@ var options7 = {
   series: [
     {
       name: "Column",
-      type: "column",
+      type: "area",
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
     },
     {

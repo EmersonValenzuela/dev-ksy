@@ -108,3 +108,5 @@ $route['Reporte-PDF-Session'] = 'reports/reportPDFSales';
 $route['API-REPORT-SALES'] = 'reports/getTableSales';
 $route['Ver-Reporte-PDF'] = 'reports/ViewReportPDF';
 $route['getDetailsSale'] = 'reports/getDetailsSales';
+
+$route['logout'] = 'login/logout';
