@@ -80,6 +80,7 @@ $(($) => {
 					"Vista Articulo",
 					"success"
 				);
+				t.ajax.reload();
 				$("#mdl_add").modal("hide");
 				$("#form-new-article")[0].reset();
 
@@ -119,6 +120,7 @@ $(($) => {
 					"Vista Articulo",
 					"success"
 				);
+				t.ajax.reload();
 				$("#mdl_add").modal("hide");
 				$("#form-new-article")[0].reset();
 
