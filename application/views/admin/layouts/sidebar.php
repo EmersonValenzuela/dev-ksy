@@ -90,6 +90,34 @@
                                         <h6>Fijados</h6>
                                     </div>
                                 </li>
+                                <?php if ($this->session->userdata('cargo')  == '1') { ?>
+                                    <li class="sidebar-list">
+                                        <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="Punto-venta">
+                                            </svg><span>POS</span></a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($this->session->userdata('cargo')  == '2') { ?>
+                                    <li class="sidebar-main-title">
+                                        <div>
+                                            <h6>ALMACEN</h6>
+                                        </div>
+                                    </li>
+                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                        <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
+                                            <svg class="stroke-icon">
+                                                <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
+                                            </svg>
+                                            <svg class="fill-icon">
+                                                <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                            </svg><span class="lan-3">Logistica
+                                            </span></a>
+                                        <ul class="sidebar-submenu">
+                                            <li><a class="lan-4" href="Gestionar-Categorias">Categorias</a></li>
+                                            <li><a class="lan-5" href="Gestionar-Articulos">Articulo</a></li>
+                                        </ul>
+                                    </li>
+                                <?php } ?>
+                                <?php if ($this->session->userdata('cargo')  == '3') { ?>
                                 <li class="sidebar-list">
                                     <i class="fa fa-thumb-tack"></i><a class="sidebar-link sidebar-title link-nav" href="Dashboard">
                                         </svg><span>Inicio</span></a>
@@ -173,6 +201,8 @@
                                         <li><a class="lan-4" href="Reporte-Ventas">Ventas</a></li>
                                     </ul>
                                 </li>
+                                <?php } ?>
+
                             </ul>
                         </div>
                         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

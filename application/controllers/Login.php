@@ -32,6 +32,7 @@ class Login extends CI_Controller
 				$this->session->set_userdata($data);
 
 				$jsonData['rsp'] = 200;
+				$jsonData['cargo'] = $r->cargo;
 			} else {
 				$jsonData['rsp'] = 400;
 			}
@@ -47,9 +48,7 @@ class Login extends CI_Controller
 
 		$this->session->unset_userdata($array_items);
 
-		if (isset($_SERVER['HTTP_REFERER']))
-			redirect($_SERVER['HTTP_REFERER']);
-		else
-			redirect('/', 'refresh');
+
+			redirect(base_url(), 'refresh');
 	}
 }

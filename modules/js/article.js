@@ -215,25 +215,30 @@ $(($) => {
 		let data = t.row(e.target.closest("tr")).data();
 
 		Swal.fire({
-			title: "Are you sure?",
-			text: "You won't be able to revert this!",
+			title: "Estas seguro?",
+			text: "¡No podrás revertir esto!",
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			confirmButtonText: "Yes, delete it!",
+			confirmButtonText: "¡Sí, bórralo!",
+			cancelButtonText: "Cancelar",
 		}).then((result) => {
 			if (result.isConfirmed) {
 				$.ajax({
-					url: "delCategory",
+					url: "delArticle",
 					type: "post",
-					data: { id: data.idcategoria },
+					data: { id: data.idarticulo, imagen: data.imagen_articulo },
 					dataType: "json",
 					beforeSend: () => {},
 				})
 					.done((data) => {
 						if ((data.rsp = true)) {
-							Swal.fire("Deleted!", "Your file has been deleted.", "success");
+							Swal.fire(
+								"Eliminado!",
+								"Tu archivo ha sido eliminado.",
+								"success"
+							);
 							t.ajax.reload();
 						}
 					})

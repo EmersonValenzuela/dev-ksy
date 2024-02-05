@@ -12,7 +12,6 @@
                                         <svg class="stroke-icon">
                                             <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-home"></use>
                                         </svg></a></li>
-                                <li class="breadcrumb-item">Dashboard</li>
                                 <li class="breadcrumb-item active">POS</li>
                             </ol>
                         </div>
@@ -63,7 +62,7 @@
                                     <div class="card-header card-no-border pb-3">
                                         <div class="header-top border-bottom pb-3">
                                             <h5 class="m-0">Cliente </h5>
-                                            <div class="card-header-right-icon create-right-btn"><a class="btn btn-light-primary f-w-500 f-12" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8">Create +</a></div>
+                                            <div class="card-header-right-icon create-right-btn"><a class="btn btn-light-primary f-w-500 f-12" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#dashboard8">Crear +</a></div>
 
                                         </div>
                                     </div>

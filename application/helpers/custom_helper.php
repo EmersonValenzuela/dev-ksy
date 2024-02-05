@@ -2,17 +2,17 @@
 if (!function_exists('check_login_user')) {
     function check_login_user()
     {
-      $ci = get_instance();
-      if ($ci->session->userdata('is_user_login') != TRUE) {
-  
-        $array_items = array('idusuario', 'nombre', 'cargo');
-  
-        $ci->session->sess_destroy();
-  
-        redirect(base_url());
-      }
+        $ci = get_instance();
+        if ($ci->session->userdata('is_user_login') != TRUE) {
+
+            $array_items = array('idusuario', 'nombre', 'cargo');
+
+            $ci->session->sess_destroy();
+
+            redirect(base_url());
+        }
     }
-  }
+}
 if (!function_exists('arrayToCommaString')) {
     function arrayToCommaString($data)
     {
@@ -28,7 +28,8 @@ if (!function_exists('arrayToCommaString')) {
     }
 }
 
-function obtenerNombreRol($idCargo) {
+function obtenerNombreRol($idCargo)
+{
     // Definir un array asociativo con los roles y sus IDs
     $roles = array(
         1 => "POS",

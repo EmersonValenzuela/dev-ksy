@@ -4,7 +4,6 @@ $(($) => {
 		url_base = $("#url_base").val();
 	$("#user_name").focus();
 
-
 	$("#frm_login").on("submit", (e) => {
 		e.preventDefault();
 		const user = $("#user_name").val(),
@@ -30,7 +29,15 @@ $(($) => {
 					} else if (v.rsp === 400) {
 						authInputs("Contraseña errónea ", "green", "red");
 					} else if (v.rsp == 200) {
-						$(location).attr('href', url_base + 'dashboard');
+						if (v.cargo == 1) {
+							$(location).attr("href", url_base + "Punto-venta");
+						}
+						if (v.cargo == 2) {
+							$(location).attr("href", url_base + "Gestionar-Articulos");
+						}
+						if (v.cargo == 3) {
+							$(location).attr("href", url_base + "dashboard");
+						}
 					}
 				})
 				.always(() => {

@@ -6,7 +6,7 @@ class Article extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-		check_login_user();
+        check_login_user();
         $this->load->model('ModelArticle');
     }
     public function index()
@@ -127,7 +127,16 @@ class Article extends CI_Controller
         $jsonData['data'] = $data;
         echo json_encode($jsonData);
     }
-    //API DATA para sacar informacion
+
+    public function delete()
+    {
+        $this->ModelArticle->delete(array('idarticulo' => $this->input->post('id')), 'articulo');
+        unlink('modules/uploads/' . $this->input->post('imagen'));
+        $jsonData['result'] = TRUE;
+        echo json_encode($jsonData);
+    }
+
+    //API DATA para obtener informacion
     public function get_articles()
     {
         if ($this->input->post('category') != null) {
