@@ -31,7 +31,9 @@ if (!function_exists('arrayToCommaString')) {
 function obtenerNombreRol($idCargo) {
     // Definir un array asociativo con los roles y sus IDs
     $roles = array(
-        1 => "admin",
+        1 => "POS",
+        2 => "LOGISTICA",
+        3 => "ADMIN",
         // Otros roles aquí si es necesario
     );
 

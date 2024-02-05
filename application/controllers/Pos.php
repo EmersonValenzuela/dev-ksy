@@ -6,7 +6,7 @@ class Pos extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-		check_login_user();
+        check_login_user();
         $this->load->model('ModelPos');
     }
     public function index()
@@ -81,7 +81,7 @@ class Pos extends CI_Controller
             }
             $jsonData['id'] = $idSale;
             $jsonData['user'] = "ADMIN";
-            
+
 
 
             echo json_encode($jsonData);
@@ -91,6 +91,31 @@ class Pos extends CI_Controller
         } catch (Exception $e) {
             // Manejar la excepción, puedes imprimir mensajes de error o loguearlos
             echo json_encode('Error: ' . $e->getMessage());
+        }
+    }
+    public function upload_ticket()
+    {
+        // Verifica si se ha enviado un archivo
+        if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            // Directorio donde se guardará el archivo PDF
+            $directorio_destino = './comprobantes/';
+
+            // Verifica si el directorio destino existe, si no, créalo
+            if (!is_dir($directorio_destino)) {
+                mkdir($directorio_destino, 0777, true);
+            }
+
+            // Mueve el archivo PDF al directorio destino
+            $nombre_archivo = $this->input->post('num_comp'); // Nombre deseado para el archivo PDF
+            $archivo_temporal = $_FILES['file']['tmp_name'];
+            $archivo_destino = $directorio_destino . $nombre_archivo;
+            move_uploaded_file($archivo_temporal, $archivo_destino);
+
+            // Devuelve una respuesta al cliente
+            echo 'Archivo PDF guardado con éxito en: ' . $archivo_destino;
+        } else {
+            // Maneja el caso de que no se haya enviado ningún archivo o haya ocurrido un error
+            echo 'Error al guardar el archivo PDF';
         }
     }
 }

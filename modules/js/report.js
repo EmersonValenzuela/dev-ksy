@@ -122,8 +122,25 @@ $(($) => {
 			dataType: "json",
 			beforeSend: () => {},
 		})
-			.done((data) => {
-				console.log(data);
+			.done((response) => {
+				generarFilasTabla(response);
+
+				$("#title_mdl").text(
+					data.serie_comprobante + " - " + data.num_comprobante
+				);
+				$("#redirect_ticket").attr(
+					"href",
+					"comprobantes/" +
+						data.serie_comprobante +
+						"-" +
+						data.num_comprobante +
+						".pdf"
+				);
+				$("#type_doc").text(data.tipo_documentoCliente);
+				$("#name_client").text(data.nombreCliente);
+				$("#sale_time").text(data.fecha_hora);
+				$("#name_seller").text(data.nombre);
+				$("#num_doc").text(data.num_documentoCliente);
 				$("#mdl_details").modal("show");
 			})
 			.fail((e) => {
@@ -136,3 +153,27 @@ $(($) => {
 		table.draw();
 	});
 });
+function generarFilasTabla(ventas) {
+	var tablaBody = document.getElementById("data-sales");
+	ventas.forEach(function (venta) {
+		var fila = "<tr>";
+		fila += "<td>" + venta.nombre_articulo + "</td>";
+		fila += "<td>" + venta.cantidad + "</td>";
+		fila += "<td>" + venta.precio_detalle + "</td>";
+		fila += "<td>" + venta.cantidad * venta.precio_detalle + "</td>"; // Precio Total
+		fila += "</tr>";
+		tablaBody.innerHTML += fila;
+	});
+	// Calcular subtotal, IGV y total
+	var subtotal = ventas.reduce(
+		(acc, venta) => acc + venta.cantidad * venta.precio_detalle,
+		0
+	);
+	var igv = subtotal * 0.18; // Suponiendo que el IGV es el 18% del subtotal
+	var total = subtotal + igv;
+
+	// Mostrar valores en las filas de la tabla
+	document.getElementById("subtotalValue").textContent = subtotal.toFixed(2);
+	document.getElementById("igvValue").textContent = igv.toFixed(2);
+	document.getElementById("totalValue").textContent = total.toFixed(2);
+}

@@ -3,12 +3,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelReports extends CI_Model
 {
-    public function reportSales()
+    public function reportSales($where = null)
     {
-        return $this->db
-            ->select('V.*, U.nombreCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date')
+        if ($where != null) {
+            return $this->db
+            ->select('V.*, U.nombreCliente,,u.tipo_documentoCliente, S.nombre,u.num_documentoCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date')
             ->from('venta V')
             ->join('cliente U', 'V.cliente = U.idcliente')
+            ->join('usuario S', 'V.usuario = S.idusuario')
+            ->where($where)
+            ->order_by('V.fecha_hora', 'DESC')
+            ->get()
+            ->row();
+        }
+        return $this->db
+            ->select('V.*, U.nombreCliente,,u.tipo_documentoCliente, S.nombre,u.num_documentoCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date')
+            ->from('venta V')
+            ->join('cliente U', 'V.cliente = U.idcliente')
+            ->join('usuario S', 'V.usuario = S.idusuario')
             ->order_by('V.fecha_hora', 'DESC')
             ->get()
             ->result();
@@ -28,7 +40,7 @@ class ModelReports extends CI_Model
                 ->result();
         }
         return $this->db
-            ->select('V.*, U.nombreCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date, U.num_documentoCliente')
+            ->select('V.*, U.nombreCliente,u.tipo_documentoCliente, u.num_documentoCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date, U.num_documentoCliente')
             ->from('venta V')
             ->join('cliente U', 'V.cliente = U.idcliente')
             ->order_by('V.fecha_hora', 'DESC')
@@ -38,8 +50,10 @@ class ModelReports extends CI_Model
     public function getDetailsSales($where)
     {
         return $this->db
-            ->select('*')
-            ->from('detalle_venta')
+            ->select('d.*')
+            ->select('a.nombre_articulo')
+            ->from('detalle_venta d')
+            ->join('articulo a', 'd.idarticulo = a.idarticulo')
             ->where($where)
             ->get()
             ->result();

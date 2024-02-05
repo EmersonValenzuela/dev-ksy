@@ -160,14 +160,7 @@
                                                     </td>
                                                     <td> <span class="badge badge-light-primary"><?= "S/ " . $factura->total_venta ?></span></td>
                                                     <td>
-                                                        <div class="product-action">
-                                                            <svg>
-                                                                <use href="../assets/svg/icon-sprite.svg#edit-content"></use>
-                                                            </svg>
-                                                            <svg>
-                                                                <use href="../assets/svg/icon-sprite.svg#trash1"></use>
-                                                            </svg>
-                                                        </div>
+                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -204,14 +197,7 @@
                                                         </td>
                                                         <td> <span class="badge badge-light-primary"><?= "S/ " . $boleta->total_venta ?></span></td>
                                                         <td>
-                                                            <div class="product-action">
-                                                                <svg>
-                                                                    <use href="../assets/svg/icon-sprite.svg#edit-content"></use>
-                                                                </svg>
-                                                                <svg>
-                                                                    <use href="../assets/svg/icon-sprite.svg#trash1"></use>
-                                                                </svg>
-                                                            </div>
+                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -221,7 +207,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
-                            <div class="row">
+                                <div class="row">
                                     <div class="list-product list-category">
                                         <table class="table" id="tabla-nota-ventas">
                                             <thead>
@@ -249,14 +235,7 @@
                                                         </td>
                                                         <td> <span class="badge badge-light-primary"><?= "S/ " . $n->total_venta ?></span></td>
                                                         <td>
-                                                            <div class="product-action">
-                                                                <svg>
-                                                                    <use href="../assets/svg/icon-sprite.svg#edit-content"></use>
-                                                                </svg>
-                                                                <svg>
-                                                                    <use href="../assets/svg/icon-sprite.svg#trash1"></use>
-                                                                </svg>
-                                                            </div>
+                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

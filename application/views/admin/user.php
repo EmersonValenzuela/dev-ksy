@@ -143,7 +143,8 @@
                                                           <select class="form-select input-air-primary" id="range" name="range">
                                                               <option value="0" selected disabled>Selecciona Cargo</option>
                                                               <option value="1">POS</option>
-                                                              <option value="2">ADMIN</option>
+                                                              <option value="2">LOGISTICA</option>
+                                                              <option value="3">ADMIN</option>
                                                           </select>
                                                       </div>
                                                   </div>

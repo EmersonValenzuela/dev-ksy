@@ -67,10 +67,21 @@ class Reports extends CI_Controller
         // Genera el PDF
         $this->dompdf_lib->generar_pdf($html, 'Reporte temperatura de ' . $dateIn . ' hasta ' . $dateOut . '.pdf');
     }
-    public function getDetailsSales(){
+    public function getDetailsSales()
+    {
         $idventa = $this->input->post('i');
         $result = $this->ModelReports->getDetailsSales(array('idventa' => $idventa));
         echo json_encode($result);
+    }
+    public function ticket($id)
+    {
+        $this->load->library('dompdf_lib');
+        $data['detail_sale'] = $this->ModelReports->getDetailsSales(array('idventa' => $id));
+        $data['sale'] = $this->ModelReports->reportSales(array('idventa' => $id));
 
+        // Carga la vista que deseas convertir a PDF
+        $html = $this->load->view('admin/reports/ticket', $data, true);
+        // Genera el PDF
+        $this->dompdf_lib->generar_ticket($html, '.pdf');
     }
 }

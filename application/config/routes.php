@@ -101,6 +101,7 @@ $route['saveSale'] = 'pos/sale';
 
 $route['Punto-venta'] = 'pos';
 $route['PostArticle'] = 'pos/load';
+$route['upload-ticket'] = 'pos/upload_ticket';
 
 
 $route['Reporte-Ventas'] = 'reports';
@@ -108,5 +109,6 @@ $route['Reporte-PDF-Session'] = 'reports/reportPDFSales';
 $route['API-REPORT-SALES'] = 'reports/getTableSales';
 $route['Ver-Reporte-PDF'] = 'reports/ViewReportPDF';
 $route['getDetailsSale'] = 'reports/getDetailsSales';
+$route['ticket-venta/(:any)'] = 'reports/ticket/$1';
 
 $route['logout'] = 'login/logout';

@@ -26,7 +26,7 @@ $(() => {
 		});
 	});
 
-	// go 
+	// go
 	$("#go-payment").on("click", function () {
 		carrito.client = $("#select-customer").val();
 		carrito.voucher = $("#select-method").val();
@@ -37,9 +37,8 @@ $(() => {
 			url: "saveSale",
 			type: "post",
 			dataType: "json",
-			data: { carrito: carrito }
+			data: { carrito: carrito },
 		}).done((e) => {
-
 			// URL de la imagen
 			const imagePath = "http://localhost/dev-ksy/assets/images/logo/logo2.png";
 			// Array para almacenar detalles de la venta
@@ -61,7 +60,9 @@ $(() => {
 						nombre_articulo: value.articulo.nombre_articulo,
 						cantidad: value.cantidad,
 						precio_unitario: value.articulo.precio_venta,
-						precio_total: (value.cantidad * value.articulo.precio_venta).toFixed(2)
+						precio_total: (
+							value.cantidad * value.articulo.precio_venta
+						).toFixed(2),
 					};
 
 					// Agregar el objeto de detalles al array
@@ -72,7 +73,7 @@ $(() => {
 						saleDetail.nombre_articulo,
 						saleDetail.cantidad,
 						saleDetail.precio_unitario,
-						saleDetail.precio_total
+						saleDetail.precio_total,
 					];
 
 					// Agregar la fila al array de filas de la tabla
@@ -94,53 +95,62 @@ $(() => {
 						{
 							image: dataURL, // Utilizar la cadena dataURL de la imagen
 							width: 200, // Ancho de la imagen
-							alignment: "center"
+							alignment: "center",
 						},
-						{ text: '\nTicket de Venta', style: 'header', alignment: 'center' },
-						{ text: '\n' + carrito.voucher + '001 - ' + e.id, style: 'header', alignment: 'center' },
-						{ text: '\n' + currentDate, alignment: 'right' },
-						{ text: '\nVendedor: ' + e.user + '\n\n\n', alignment: 'center' },
+						{ text: "\nTicket de Venta", style: "header", alignment: "center" },
+						{
+							text: "\n" + carrito.voucher + "001 - " + e.id,
+							style: "header",
+							alignment: "center",
+						},
+						{ text: "\n" + currentDate, alignment: "right" },
+						{ text: "\nVendedor: " + e.user + "\n\n\n", alignment: "center" },
 						{
 							table: {
 								headerRows: 1,
-								widths: ['*', 'auto', 'auto', 'auto'], // '*' significa ancho automático
+								widths: ["*", "auto", "auto", "auto"], // '*' significa ancho automático
 								body: [
-									[{ text: 'Nombre de Producto', bold: true }, { text: 'Cantidad', bold: true }, { text: 'Precio Unitario', bold: true }, { text: 'Precio Total', bold: true }],
-									...tableRows
-								]
+									[
+										{ text: "Nombre de Producto", bold: true },
+										{ text: "Cantidad", bold: true },
+										{ text: "Precio Unitario", bold: true },
+										{ text: "Precio Total", bold: true },
+									],
+									...tableRows,
+								],
 							},
-							layout: 'lightHorizontalLines', // Añadir líneas horizontales ligeras
-							style: 'tableStyle'
+							layout: "lightHorizontalLines", // Añadir líneas horizontales ligeras
+							style: "tableStyle",
 						},
 						{
 							columns: [
-								{ text: '\n\nSubtotal', alignment: 'right' },
-								{ text: '\n\n' + subotal, alignment: 'right' }
-							]
+								{ text: "\n\nSubtotal", alignment: "right" },
+								{ text: "\n\n" + subotal, alignment: "right" },
+							],
 						},
 						{
 							columns: [
-								{ text: 'IGV', alignment: 'right' },
-								{ text: igv, alignment: 'right' }
-							]
+								{ text: "IGV", alignment: "right" },
+								{ text: igv, alignment: "right" },
+							],
 						},
 						{
-
 							columns: [
-								{ text: 'Total', alignment: 'right' },
-								{ text: carrito.total_price, alignment: 'right' }
-							]
+								{ text: "Total", alignment: "right" },
+								{ text: carrito.total_price, alignment: "right" },
+							],
 						},
 						{
-							text: '\n\nMétodo de pago: ' + carrito.payment + '\n\n\n', alignment: 'center'
+							text: "\n\nMétodo de pago: " + carrito.payment + "\n\n\n",
+							alignment: "center",
 						},
-						{ qr: 'text in QR', alignment: 'center' }
+						{ qr: "text in QR", alignment: "center" },
 					],
 					styles: {
 						header: { fontSize: 18, bold: true },
 					},
 					// Establecer los márgenes del documento
-					margin: [30, 30, 30, 30] // Márgenes: arriba, derecha, abajo, izquierda
+					margin: [30, 30, 30, 30], // Márgenes: arriba, derecha, abajo, izquierda
 				};
 
 				// Generar el PDF
@@ -148,13 +158,35 @@ $(() => {
 
 				// Convertir el PDF a un blob
 				pdfDoc.getBlob((blob) => {
-					// Crear una URL para el blob
-					var url = URL.createObjectURL(blob);
+					var formData = new FormData();
+					formData.append(
+						"file",
+						blob,
+						carrito.voucher + "001-" + e.id + ".pdf"
+					);
+					formData.append("num_comp", carrito.voucher + "001-" + e.id + ".pdf");
 
-					// Abrir una nueva ventana y cargar el PDF
-					var ticketWindow = window.open(url, '_blank');
+					// Realizar una solicitud AJAX para guardar el PDF en el servidor
+					$.ajax({
+						url: "upload-ticket",
+						type: "POST",
+						data: formData,
+						processData: false,
+						contentType: false,
+						success: function (response) {
+							// Manejar la respuesta del servidor
+							// Crear una URL para el blob
+							var url = URL.createObjectURL(blob);
+
+							// Abrir una nueva ventana y cargar el PDF
+							var ticketWindow = window.open(url, "_blank");
+						},
+						error: function (xhr, status, error) {
+							// Manejar errores
+							console.error(xhr, status, error);
+						},
+					});
 				});
-
 			});
 		});
 	});
@@ -169,13 +201,10 @@ $(() => {
 			};
 			reader.readAsDataURL(xhr.response);
 		};
-		xhr.open('GET', url);
-		xhr.responseType = 'blob';
+		xhr.open("GET", url);
+		xhr.responseType = "blob";
 		xhr.send();
 	}
-
-
-
 
 	$("#btn_send").on("click", (e) => {
 		e.preventDefault();

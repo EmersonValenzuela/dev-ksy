@@ -32,7 +32,7 @@
                         <li>
                             <div class="mode">
                                 <svg>
-                                    <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#moon"></use>
+                                    <use href="<?= base_url('assets/svg/icon-sprite.svg#moon') ?>"></use>
                                 </svg>
                             </div>
                         </li>
@@ -58,7 +58,7 @@
                             <ul class="profile-dropdown onhover-show-div">
                                 <li><a href="#"><i data-feather="user"></i><span>Cuenta
                                         </span></a></li>
-                                <li><a href="<?=base_url('logout')?>"><i data-feather="log-in"> </i><span>Salir</span></a></li>
+                                <li><a href="<?= base_url('logout') ?>"><i data-feather="log-in"> </i><span>Salir</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -109,7 +109,7 @@
                                             <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                            <use href="<?= base_url('assets/svg/icon-sprite.svg#fill-home') ?>"></use>
                                         </svg><span class="lan-3">Gestion
                                         </span></a>
                                     <ul class="sidebar-submenu">
@@ -122,12 +122,13 @@
                                     </div>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                    <label class="badge badge-light-primary">8</label><a class="sidebar-link sidebar-title" href="#">
+                                    <label class="badge badge-light-primary">8</label>
+                                    <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
                                             <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#stroke-"></use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="<?= base_url() ?>assets/svg/icon-sprite.svg#fill-home"></use>
+                                            <use href="<?= base_url('assets/svg/icon-sprite.svg#fill-home') ?>"></use>
                                         </svg><span class="lan-3">Ventas
                                         </span></a>
                                     <ul class="sidebar-submenu">
