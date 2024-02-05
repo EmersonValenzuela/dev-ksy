@@ -160,7 +160,7 @@
                                                     </td>
                                                     <td> <span class="badge badge-light-primary"><?= "S/ " . $factura->total_venta ?></span></td>
                                                     <td>
-                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
+                                                        <a href="comprobantes/<?= $factura->serie_comprobante . "-" . $factura->num_comprobante . ".pdf" ?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -197,7 +197,7 @@
                                                         </td>
                                                         <td> <span class="badge badge-light-primary"><?= "S/ " . $boleta->total_venta ?></span></td>
                                                         <td>
-                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
+                                                            <a href="comprobantes/<?= $factura->serie_comprobante . "-" . $factura->num_comprobante . ".pdf" ?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -235,7 +235,7 @@
                                                         </td>
                                                         <td> <span class="badge badge-light-primary"><?= "S/ " . $n->total_venta ?></span></td>
                                                         <td>
-                                                        <a href="comprobantes/<?=$factura->serie_comprobante . "-" . $factura->num_comprobante.".pdf"?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
+                                                            <a href="comprobantes/<?= $factura->serie_comprobante . "-" . $factura->num_comprobante . ".pdf" ?>" target="_blank" class="btn btn-danger btn-hover-effect"><i class="fa fa-file-pdf-o f-18"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

@@ -48,6 +48,8 @@ class Pos extends CI_Controller
             // Calcular el IGV
             $igv = $values['total_price'] * 0.18;
             $igv = round($igv, 2);
+            $last = $this->ModelPos->get_last_sale(array('tipo_comprobante' => $values['voucher']));
+
 
             // Crear el array para la venta
             $sale = array(
@@ -56,29 +58,13 @@ class Pos extends CI_Controller
                 "tipo_comprobante" => $values['voucher'],
                 "serie_comprobante" => $values['voucher'] . "001",
                 "impuesto" => $igv,
+                "num_comprobante" => $last,
                 "total_venta" => $values['total_price'],
                 "estado" => 1
             );
 
             // Insertar la venta en la base de datos
             $idSale = $this->ModelPos->insert($sale, 'venta');
-
-            // Actualizar el número de comprobante
-            $this->ModelPos->update(array('idventa' => $idSale), array('num_comprobante' => $idSale), 'venta');
-
-            // Itera sobre las claves numéricas y realiza la inserción
-            foreach ($values as $key => $value) {
-                if (is_numeric($key)) {
-                    $idarticulo = $value["articulo"]["idarticulo"];
-                    $saleDetail = array(
-                        "idventa" => $idSale,
-                        "idarticulo" => $idarticulo,
-                        "cantidad" => $value['cantidad'],
-                        "precio_detalle" => $value["articulo"]["precio_venta"],
-                    );
-                    $this->ModelPos->insert($saleDetail, 'detalle_venta');
-                }
-            }
             $jsonData['id'] = $idSale;
             $jsonData['user'] = "ADMIN";
 
