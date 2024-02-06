@@ -16,6 +16,9 @@ $(() => {
 			// Manejar errores de red u otros errores
 			console.error("Error en la solicitud fetch:", error);
 		});
+		$()
+
+
 
 	fetch("dashboard/getAmount")
 		.then((response) => {
