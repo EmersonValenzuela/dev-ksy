@@ -40,7 +40,7 @@ $(() => {
 			data: { carrito: carrito },
 		}).done((e) => {
 			// URL de la imagen
-			const imagePath = "http://localhost/dev-ksy/assets/images/logo/logo2.png";
+			const imagePath = "https://invertecksy.com/assets/images/logo/logo2.png";
 			// Array para almacenar detalles de la venta
 			var saleDetails = [];
 
