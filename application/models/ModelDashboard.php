@@ -9,27 +9,32 @@ class ModelDashboard extends CI_Model
         // Obtener la fecha actual y ajustarla para obtener el final del día
         $currentDate = date('Y-m-d');
         $endOfDay = $currentDate . ' 23:59:59';
-
+    
         // Calcular la fecha 7 días atrás
         $sevenDaysAgo = date('Y-m-d', strtotime('-7 days')) . ' 00:00:00';
-
-        // Construir la consulta
-        $this->db->select('tipos.tipo_comprobante, fechas.fecha, COALESCE(ventas.cantidad_ventas, 0) as cantidad_ventas, COALESCE(ventas.total_venta, 0) as total_venta');
-        $this->db->from('
-            (SELECT "F" as tipo_comprobante
-             UNION SELECT "B" as tipo_comprobante
-             UNION SELECT "N" as tipo_comprobante) as tipos
-             CROSS JOIN
-            (SELECT DISTINCT DATE(fecha_hora) as fecha FROM venta WHERE fecha_hora BETWEEN "' . $sevenDaysAgo . '" AND "' . $endOfDay . '") as fechas
-            LEFT JOIN
-            (SELECT tipo_comprobante, DATE(fecha_hora) as fecha, COUNT(*) as cantidad_ventas, SUM(total_venta) as total_venta FROM venta WHERE fecha_hora BETWEEN "' . $sevenDaysAgo . '" AND "' . $endOfDay . '" GROUP BY tipo_comprobante, DATE(fecha_hora)) as ventas
+    
+        // Construir la consulta utilizando consultas parametrizadas
+        $query = $this->db->query('
+            SELECT tipos.tipo_comprobante, fechas.fecha, COALESCE(ventas.cantidad_ventas, 0) as cantidad_ventas, COALESCE(ventas.total_venta, 0) as total_venta
+            FROM (
+                SELECT "F" as tipo_comprobante
+                UNION SELECT "B" as tipo_comprobante
+                UNION SELECT "N" as tipo_comprobante
+            ) as tipos
+            CROSS JOIN (
+                SELECT DISTINCT DATE(fecha_hora) as fecha FROM venta WHERE fecha_hora BETWEEN ? AND ?
+            ) as fechas
+            LEFT JOIN (
+                SELECT tipo_comprobante, DATE(fecha_hora) as fecha, COUNT(*) as cantidad_ventas, SUM(total_venta) as total_venta
+                FROM venta WHERE fecha_hora BETWEEN ? AND ? GROUP BY tipo_comprobante, DATE(fecha_hora)
+            ) as ventas
             ON tipos.tipo_comprobante = ventas.tipo_comprobante AND fechas.fecha = ventas.fecha
-        ', null, false);
-        $query = $this->db->get();
-
+        ', array($sevenDaysAgo, $endOfDay, $sevenDaysAgo, $endOfDay));
+    
         // Obtener los resultados
         return $query->result();
     }
+    
 
     public function getAmount()
     {
