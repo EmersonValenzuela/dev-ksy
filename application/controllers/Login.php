@@ -39,7 +39,6 @@ class Login extends CI_Controller
 		} else {
 			$jsonData['rsp'] = 100;
 		}
-		header('Content-type: application/json; charset=utf-8');
 		echo json_encode($jsonData);
 	}
 	public function logout()
@@ -49,6 +48,6 @@ class Login extends CI_Controller
 		$this->session->unset_userdata($array_items);
 
 
-			redirect(base_url(), 'refresh');
+		redirect(base_url(), 'refresh');
 	}
 }
