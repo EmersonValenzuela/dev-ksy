@@ -39,8 +39,9 @@ $(() => {
 			dataType: "json",
 			data: { carrito: carrito },
 		}).done((e) => {
+			console.log(e)
 			// URL de la imagen
-			const imagePath = "https://invertecksy.com/assets/images/logo/logo2.png";
+			const imagePath = "http://dev-ksy.test/assets/images/logo/logo2.png";
 			// Array para almacenar detalles de la venta
 			var saleDetails = [];
 
@@ -52,6 +53,7 @@ $(() => {
 				// Verificar si la clave es numérica
 				if (!isNaN(key)) {
 					var value = carrito[key];
+					
 
 					// Construir objeto de detalles de la venta
 					var saleDetail = {
@@ -99,7 +101,7 @@ $(() => {
 						},
 						{ text: "\nTicket de Venta", style: "header", alignment: "center" },
 						{
-							text: "\n" + carrito.voucher + "001 - " + e.id,
+							text: "\n" + carrito.voucher + "001 - " + e.num_cp,
 							style: "header",
 							alignment: "center",
 						},
@@ -162,9 +164,9 @@ $(() => {
 					formData.append(
 						"file",
 						blob,
-						carrito.voucher + "001-" + e.id + ".pdf"
+						carrito.voucher + "001-" + e.num_cp + ".pdf"
 					);
-					formData.append("num_comp", carrito.voucher + "001-" + e.id + ".pdf");
+					formData.append("num_comp", carrito.voucher + "001-" + e.num_cp + ".pdf");
 
 					// Realizar una solicitud AJAX para guardar el PDF en el servidor
 					$.ajax({
@@ -180,6 +182,11 @@ $(() => {
 
 							// Abrir una nueva ventana y cargar el PDF
 							var ticketWindow = window.open(url, "_blank");
+
+		        // Después de 3 segundos, recargar la página actual
+				setTimeout(function() {
+					location.reload();
+				}, 2000);
 						},
 						error: function (xhr, status, error) {
 							// Manejar errores
@@ -205,6 +212,24 @@ $(() => {
 		xhr.responseType = "blob";
 		xhr.send();
 	}
+
+	$(".btn-zero").on("click", () => {
+		const Toast = Swal.mixin({
+			toast: true,
+			position: "top-end",
+			showConfirmButton: false,
+			timer: 3000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.onmouseenter = Swal.stopTimer;
+				toast.onmouseleave = Swal.resumeTimer;
+			},
+		});
+		Toast.fire({
+			icon: "error",
+			title: "Articulo sin stock",
+		});
+	});
 
 	$("#btn_send").on("click", (e) => {
 		e.preventDefault();
@@ -273,26 +298,40 @@ const loadProducts = (category) => {
 		// Obtén el contenedor donde deseas agregar los productos
 		var productContainer = $(".scroll-product");
 		productContainer.empty();
-
+		console.log(response.data);
 		// Itera sobre los datos y crea elementos HTML para cada producto
 		var productsHTML = data
 			.map(
 				(articulo) => `
-                    <div class="col-xxl-3 col-sm-4">
-                        <div class="our-product-wrapper h-100 widget-hover">
-                            <div class="our-product-img"><img src="modules/uploads/${articulo.imagen_articulo}" alt="${articulo.nombre_articulo}"></div>
-                            <div class="our-product-content">
-                                <h6 class="f-14 f-w-500 pt-2 pb-1">${articulo.nombre_articulo}</h6>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h6 class="txt-primary">S/. ${articulo.precio_venta}</h6>
-                                    <div class="add-quantity btn border text-gray f-12 f-w-500 btn-shop" data-id="${articulo.idarticulo}">
-                                        <i class="fa fa-plus count-increase"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `
+				<div class="col-xxl-3 col-sm-4">
+					<div class="our-product-wrapper h-100 widget-hover ${
+						articulo.stock_articulo == 0 ? "bg-gray" : ""
+					}">
+						<div class="our-product-img">
+						<img src="modules/uploads/${articulo.imagen_articulo}" alt="${
+					articulo.nombre_articulo
+				}">
+						</div>
+						<div class="our-product-content">
+							<h6 class="f-14 f-w-500 pt-2 pb-1">${articulo.nombre_articulo}</h6>
+							<div class="d-flex justify-content-between align-items-center">
+								<h6 class="txt-primary">S/. ${articulo.precio_venta}</h6>
+								<div class="add-quantity btn border text-gray f-12 f-w-500 ${
+									articulo.stock_articulo == 0 ? "btn-zero" : "btn-shop"
+								}" data-id="${articulo.idarticulo}" ${
+					articulo.stock_articulo == 0 ? "disabled" : ""
+				}>
+									<i class="${
+										articulo.stock_articulo == 0
+											? "fa fa-times"
+											: "fa fa-plus count-increase"
+									}"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			`
 			)
 			.join("");
 

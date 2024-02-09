@@ -56,4 +56,12 @@ class ModelPos extends CI_Model
         $this->db->update($table, $data);
         return $this->db->insert_id();
     }
+    public function getById($where)
+    {
+        $this->db->select('*');
+        $this->db->from('articulo');
+        $this->db->where($where);
+        $query = $this->db->get();
+        return $query->row();
+    }
 }

@@ -50,7 +50,6 @@ class Pos extends CI_Controller
             $igv = round($igv, 2);
             $last = $this->ModelPos->get_last_sale(array('tipo_comprobante' => $values['voucher']));
 
-
             // Crear el array para la venta
             $sale = array(
                 "usuario" => 1,
@@ -65,10 +64,36 @@ class Pos extends CI_Controller
 
             // Insertar la venta en la base de datos
             $idSale = $this->ModelPos->insert($sale, 'venta');
+
+            // Actualizar el número de comprobante
+
+            // Itera sobre las claves numéricas y realiza la inserción
+            foreach ($values as $key => $value) {
+                if (is_numeric($key)) {
+                    $idarticulo = $value["articulo"]["idarticulo"];
+                    $cantidadVendida = $value['cantidad'];
+
+                    // Obtener el artículo actual para obtener el stock actual
+                    $articuloActual = $this->ModelPos->getById(array('idarticulo' => $idarticulo));
+                    $stockActual = $articuloActual->stock_articulo;
+                    $nuevoStock = $stockActual - $cantidadVendida;
+
+                    // Actualizar el stock en la base de datos
+                    $this->ModelPos->update( array('idarticulo' => $idarticulo),array('stock_articulo' => $nuevoStock), 'articulo');
+
+                    $saleDetail = array(
+                        "idventa" => $idSale,
+                        "idarticulo" => $idarticulo,
+                        "cantidad" => $value['cantidad'],
+                        "precio_detalle" => $value["articulo"]["precio_venta"],
+                    );
+                    $this->ModelPos->insert($saleDetail, 'detalle_venta');
+                }
+            }
+
             $jsonData['id'] = $idSale;
             $jsonData['user'] = "ADMIN";
-
-
+            $jsonData['num_cp'] =$last;
 
             echo json_encode($jsonData);
 
