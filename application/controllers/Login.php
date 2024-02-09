@@ -10,14 +10,17 @@ class Login extends CI_Controller
 	}
 	public function index()
 	{
-		if($this->session->userdata('cargo') == 1){
-			redirect(base_url('Punto-venta'));
+		if ($this->session->userdata('cargo') == 1) {
+			header('Location: ' . base_url('Punto-venta'));
+			exit;
 		}
-		if($this->session->userdata('cargo') == 2){
-			redirect(base_url('Gestionar-Articulos'));
+		if ($this->session->userdata('cargo') == 2) {
+			header('Location: ' . base_url('Gestionar-Articulos'));
+			exit;
 		}
-		if($this->session->userdata('cargo') == 3){
-			redirect(base_url('dashboard'));
+		if ($this->session->userdata('cargo') == 3) {
+			header('Location: ' . base_url('dashboard'));
+			exit;
 		}
 		$data['title'] =  'Login';
 		$this->load->view('login', $data);
@@ -56,7 +59,7 @@ class Login extends CI_Controller
 
 		$this->session->unset_userdata($array_items);
 
-		redirect(base_url());
+		header('Location: ' . base_url());
+		exit;
 	}
 }
-?>
