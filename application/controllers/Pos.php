@@ -130,3 +130,4 @@ class Pos extends CI_Controller
         }
     }
 }
+?>

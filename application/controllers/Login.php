@@ -56,7 +56,7 @@ class Login extends CI_Controller
 
 		$this->session->unset_userdata($array_items);
 
-		redirect(base_url(), 'refresh');
+		redirect(base_url());
 	}
 }
 ?>
