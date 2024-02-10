@@ -33,9 +33,7 @@
                                             </div>
                                             <div class="product-body">
                                                 <div class="input-group product-search"><span class="input-group-text"><i class="search-icon text-gray" data-feather="search"></i></span>
-                                                    <input class="form-control" type="text" placeholder="Buscar aqui.." list="datalistOptionssearch" id="p-search">
-                                                    <datalist id="datalistOptionssearch">
-                                                    </datalist>
+                                                    <input class="form-control" type="text" placeholder="Buscar aqui.." id="p-search">
                                                 </div>
                                                 <div class="input-group product-search">
                                                     <span class="input-group-text"><i data-feather="folder-plus"></i></span>

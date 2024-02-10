@@ -18,14 +18,29 @@ $(() => {
 
 	$("#p-search").on("input", function () {
 		var searchTerm = $(this).val().toLowerCase();
+	
+		// Obtener todos los productos dentro del contenedor
+		var products = $(".scroll-product .our-product-wrapper");
+	
+		// Filtrar los productos basados en el término de búsqueda
+		var filteredProducts = products.filter(function () {
+			var productText = $(this).text().toLowerCase();
+			return productText.includes(searchTerm);
+		});
+	
+		// Obtener los productos que no coinciden con el término de búsqueda
+		var hiddenProducts = products.not(filteredProducts);
 
 		// Filtra los productos basados en el término de búsqueda
 		$(".our-product-wrapper").each(function () {
 			var productText = $(this).text().toLowerCase();
 			$(this).toggle(productText.includes(searchTerm));
 		});
+		// Reorganizar los productos dentro del contenedor
+		$(".scroll-product").empty().append(filteredProducts.parent()).append(hiddenProducts.parent());
 	});
-
+	
+	
 	// go
 	$("#go-payment").on("click", function () {
 		carrito.client = $("#select-customer").val();
