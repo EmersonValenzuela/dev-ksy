@@ -144,6 +144,7 @@ $(($) => {
 			if ((data.rsp = 200)) {
 				alert_type("Usuario editado correctamente", "Vista Usuario", "success"); //cambiar
 				t.ajax.reload();
+				$("#mdl_add").modal("hide");
 			} else {
 				alert_type("Error", "Vista Usuario", "error"); //cambiar
 			}
@@ -154,13 +155,14 @@ $(($) => {
 		let data = t.row(e.target.closest("tr")).data();
 
 		Swal.fire({
-			title: "Are you sure?",
-			text: "You won't be able to revert this!",
+			title: "Estas seguro?",
+			text: "No podrás revertir esto.!",
 			icon: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			confirmButtonText: "Yes, delete it!",
+			confirmButtonText: "¡Sí, bórralo!",
+			cancelButtonText: "Cancelar",
 		}).then((result) => {
 			if (result.isConfirmed) {
 				$.ajax({

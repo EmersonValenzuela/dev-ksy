@@ -7,7 +7,7 @@ class ModelReports extends CI_Model
     {
         if ($where != null) {
             return $this->db
-            ->select('V.*, U.nombreCliente,U.tipo_documentoCliente, S.nombre,u.num_documentoCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date')
+            ->select('V.*, U.nombreCliente,U.tipo_documentoCliente, S.nombre,U.num_documentoCliente, DATE_FORMAT(V.fecha_hora, "%Y/%m/%d") as formatted_date')
             ->from('venta V')
             ->join('cliente U', 'V.cliente = U.idcliente')
             ->join('usuario S', 'V.usuario = S.idusuario')
